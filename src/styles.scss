@@ -1,9 +1,15 @@
+// body {
+//     background: #333;
+//     color: #fff;
+//     font-family: 'Archivo Black', sans-serif;
+//     font-size: 3em;
+//     margin-top: 1em;
+//     text-align: center;
+//     text-transform: uppercase;
+//   }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
 body {
-    background: #333;
-    color: #fff;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 3em;
-    margin-top: 1em;
-    text-align: center;
-    text-transform: uppercase;
-  }
+  font-family: "Lato", sans-serif;
+}
