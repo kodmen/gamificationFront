@@ -5,6 +5,7 @@ import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
+  HttpParams,
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -70,8 +71,12 @@ export class AuthService {
     //active user 
     activeUser(key:number):Observable<any>{
 
-      let api = `${this.endpoint}/activate?key=${key}`;
-      return this.http.get<any>(api).pipe(
+      let api = `${this.endpoint}/activate`;
+      let queryParams = new HttpParams();
+      queryParams = queryParams.append("key",key);
+   
+      //return this.http.get<UserInformation>(url,{params:queryParams});
+      return this.http.get<any>(api,{params:queryParams}).pipe(
         map((res: Response) => {
           return res || {};
         }),

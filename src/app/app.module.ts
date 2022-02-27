@@ -13,6 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/layouts/header/header.component';
 import { SignupComponent } from './shared/signup/signup.component';
 import { AccountActiveComponent } from './shared/account-active/account-active.component';
+import { PasswordResetInitComponent } from './shared/account/password-reset-init/password-reset-init.component';
+import { PasswordResetFinishComponent } from './shared/account/password-reset-finish/password-reset-finish.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { AccountActiveComponent } from './shared/account-active/account-active.c
     SigninComponent,
     HeaderComponent,
     SignupComponent,
-    AccountActiveComponent
+    AccountActiveComponent,
+    PasswordResetInitComponent,
+    PasswordResetFinishComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
