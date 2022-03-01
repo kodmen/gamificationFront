@@ -1,4 +1,4 @@
-<div class="sidenav">
+<!-- <div class="sidenav">
    <div class="login-main-text">
       <h2>Application<br> Login Page</h2>
       <p>Login or register from here to access.</p>
@@ -62,3 +62,53 @@
       </div>
    </div>
 </div>
+
+		========================= signup-style-1 start ========================= -->
+         <!-- ========================= login-style-2 start ========================= -->
+    <section class="login-section login-style-2 mb-80">
+      <div class="container mb-5">
+        <div class="login-wrapper img-bg">
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-xl-5 offset-xl-1">
+              <div class="login-content-wrapper">
+                <div class="section-title mb-40">
+                  <h3 class="">Log In</h3>
+                  <p>Morbi et sagittis dui, sed fermentum ante. Pellentesque <br class="d-none d-md-block"> molestie sit amet dolor vel euismod.</p>
+                </div>
+                <form class="login-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
+                 
+                  <div class="single-input">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" formControlName="username" placeholder="username" placeholder="Your Email"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    <i class="lni lni-envelope"></i>
+                  </div>
+
+                  <div class="single-input">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" formControlName="password" name="login-password" placeholder="Enter password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                    <i class="lni lni-lock"></i>
+                  </div>
+                  <div class="form-footer">
+                    <div class="form-check mb-25">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Remember Me
+                      </label>
+                    </div>
+                    <p class="mb-25"><a routerLink="/sifre-unuttum" >Forgot Password?</a></p>
+                  </div>
+                  <div class="signup-button mb-25">
+                    <button type="submit" class="button button-lg radius-10 btn-block">Log in</button>
+                  </div>
+                  <p class="mb-25">Don't have an account? <a routerLink="/sign-up">Sign up</a> </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<!-- ========================= login-style-2 end ========================= -->
+		

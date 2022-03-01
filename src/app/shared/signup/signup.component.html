@@ -1,4 +1,4 @@
-
+<!-- 
 
 
 <section class="vh-100" >
@@ -12,7 +12,6 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
                                
-                                <!-- <form class="mx-1 mx-md-4" [formGroup]="signupForm" (ngSubmit)="registerUser()"> -->
                                     <form class="mx-1 mx-md-4" [formGroup]="form" (ngSubmit)="onSubmit()">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fa fa-user fa-lg me-3 fa-fw"></i>
@@ -36,9 +35,6 @@
                                                 </div>
                                               </div>
                                           
-                                            <!-- <input type="text" id="form3Example1c" class="form-control"
-                                                formControlName="name" placeholder="Your Name" /> -->
-                                            <!-- <label class="form-label" for="form3Example1c">Your Name</label> -->
                                         </div>
                                     </div>
 
@@ -58,10 +54,7 @@
                                                   <div *ngIf="f.email.errors.email">Email is invalid</div>
                                                 </div>
                                               </div>
-                                            <!-- <input type="email" id="form3Example3c" class="form-control"
-                                                formControlName="email" placeholder="Your Email" /> -->
-                                            <!-- <label class="form-label" for="form3Example3c">Your Email</label> -->
-                                        </div>
+                                          </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
@@ -86,10 +79,7 @@
                                                   </div>
                                                 </div>
                                               </div>
-                                            <!-- <input type="password" id="form3Example4c" class="form-control"
-                                                formControlName="password" placeholder="Password" /> -->
-                                            <!-- <label class="form-label" for="form3Example4c">Password</label> -->
-                                        </div>
+                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
@@ -116,28 +106,11 @@
                                                   </div>
                                                 </div>
                                               </div>
-                                            <!-- <input type="password" id="form3Example4cd" class="form-control"
-                                                formControlName="checkPassword" placeholder="Repeat your password" /> -->
-                                            <!-- <label class="form-label" for="form3Example4cd">Repeat your password</label> -->
                                         </div>
                                     </div>
 
-                                    <!-- <div class="form-check d-flex justify-content-center mb-5">
-                      <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form2Example3c"
-                      />
-                      <label class="form-check-label" for="form2Example3">
-                        I agree all statements in <a href="#!">Terms of service</a>
-                      </label>
-                    </div>
-   -->
-                                    <div class="d-flex justify-content-start mx-4 mb-3 mb-lg-4">
-                                        <!-- <button type="button" type="submit"
-                                            class="btn btn-primary btn-lg">Register</button> -->
-                                            <button type="submit" class="btn btn-primary mx-3">Register</button>
+                                 <div class="d-flex justify-content-start mx-4 mb-3 mb-lg-4">
+                                       <button type="submit" class="btn btn-primary mx-3">Register</button>
                                             <button
                                               type="button"
                                               (click)="onReset()"
@@ -162,4 +135,56 @@
             </div>
         </div>
     </div>
+</section> -->
+
+
+<!-- ========================= signup-style-2 start ========================= -->
+<section class="signup signup-style-2 mb-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="signup-content-wrapper">
+          <div class="section-title">
+            <h3 class="mb-20">Sign Up</h3>
+            <p>Morbi et sagittis dui, sed fermentum ante. Pellentesque molestie sit amet dolor vel euismod.</p>
+          </div>
+          <div class="image">
+            <img src="assets/img/signup/signup-2/signup-img.svg" alt="" class="w-100">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="signup-form-wrapper">
+          <form class="signup-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="single-input">
+              <label for="signup-name">Name</label>
+              <input formControlName="username" type="text" id="signup-name" name="signup-name" placeholder="Your Name" autocomplete="off" >
+            </div>
+            <div class="single-input">
+              <label for="signup-email">Email</label>
+              <input formControlName="email" type="email" id="signup-email" name="signup-email" autocomplete="off" 
+                placeholder="Your Email">
+            </div>
+
+            <div class="single-input">
+              <label for="signup-password">Password</label>
+              <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'" id="signup-password"
+                name="signup-password" placeholder="Choose password">
+              <!-- <i class="lni lni-eye"></i> -->
+              <i class="lni" [ngClass]="{
+                  'lni-eye': !fieldTextType,
+                  'lni-ban': fieldTextType
+                }" (click)="toggleFieldTextType()"></i>
+            </div>
+
+            <div class="signup-button mb-25">
+              <button class="button button-lg radius-10 pl-60 pr-60" type="submit">Sign up</button>
+            </div>
+            <p>Already you have an account? <a routerLink="/log-in">Log In</a> </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<!-- ========================= signup-style-2 end ========================= -->

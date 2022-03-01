@@ -16,6 +16,14 @@ import { AccountActiveComponent } from './shared/account-active/account-active.c
 import { PasswordResetInitComponent } from './shared/account/password-reset-init/password-reset-init.component';
 import { PasswordResetFinishComponent } from './shared/account/password-reset-finish/password-reset-finish.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { HomeComponent } from './shared/home/home.component';
+import { JrSwitchCasesDirective } from './core/directive/jr-switch-cases.directive';
+import { JumbotronHomeComponent } from './components/jumbotron-home/jumbotron-home.component';
+import { AlertComponent } from './core/alert/alert.component';
+import { AlertModule } from './core/alert/alert.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,7 +35,10 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
     AccountActiveComponent,
     PasswordResetInitComponent,
     PasswordResetFinishComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HomeComponent,
+    JrSwitchCasesDirective,
+    JumbotronHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +47,10 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
     HttpClientJsonpModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    AlertModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
