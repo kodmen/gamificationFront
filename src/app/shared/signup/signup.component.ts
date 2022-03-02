@@ -106,15 +106,16 @@ export class SignupComponent implements OnInit {
 
       this.authService.signUp({ login, email, password, langKey }).subscribe(
         (res) => {
-          this.form.reset();
-          this.router.navigate(['log-in']);
+          //this.form.reset();
+
+          this.router.navigate(['/sendMail']);
         },
         (err) => {
           console.log('error hata');
           console.log(err);
           // burda errora göre hata fırlat
           this.notifcation.showError(
-            'parola kullanılımış olabilir',
+            'Hata oluştu',
             ' Try Again '
           );
         }

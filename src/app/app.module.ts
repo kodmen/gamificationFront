@@ -24,6 +24,8 @@ import { AlertModule } from './core/alert/alert.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
+import { DerslerComponent } from './dersler/dersler.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { ToastrModule } from 'ngx-toastr';
     NotFoundComponent,
     HomeComponent,
     JrSwitchCasesDirective,
-    JumbotronHomeComponent
+    JumbotronHomeComponent,
+    DerslerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     NgbModule,
     AlertModule,
+    SharedModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DerslerComponent } from './dersler/dersler.component';
 import { AccountActiveComponent } from './shared/account-active/account-active.component';
 import { PasswordResetFinishComponent } from './shared/account/password-reset-finish/password-reset-finish.component';
 import { PasswordResetInitComponent } from './shared/account/password-reset-init/password-reset-init.component';
 import { HomeComponent } from './shared/home/home.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { SigninComponent } from './shared/signin/signin.component';
+import { ShowSendMailComponent } from './shared/signup/showSendMail.component';
 import { SignupComponent } from './shared/signup/signup.component';
 
 export const routes: Routes = [
@@ -15,8 +17,11 @@ export const routes: Routes = [
   { path: 'sifre-unuttum', component: PasswordResetInitComponent },
   { path: 'yeni-sifre/:key', component: PasswordResetFinishComponent },
   { path: 'account/:key', component: AccountActiveComponent },
-  {path: 'home', component:HomeComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'sendMail', component: ShowSendMailComponent},
+  {path:"dersler",component:DerslerComponent},
   { path: '**', component: NotFoundComponent },
+ 
 ];
 
 @NgModule({

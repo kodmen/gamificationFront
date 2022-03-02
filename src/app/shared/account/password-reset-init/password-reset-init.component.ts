@@ -75,7 +75,10 @@ export class PasswordResetInitComponent implements AfterViewInit {
 
     this.passwordResetInitService
       .save(this.resetRequestForm.get(['email'])!.value)
-      .subscribe(() => (this.success = true),err=>{
+      .subscribe(() => {
+        this.success = true;
+        this.notifcation.showSuccess("e-posta adresinize mail gönderildi","İşlem Başarılı");
+        },err=>{
         this.notifcation.showError(
           'server hatası',
           ' Try Again '

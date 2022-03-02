@@ -15,14 +15,9 @@ import { PasswordResetFinishService } from './password-reset-finish.service';
   templateUrl: './password-reset-finish.component.html',
   styleUrls: ['./password-reset-finish.component.scss'],
 })
-export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
-  @ViewChild('newPassword', { static: false })
-  newPassword?: ElementRef;
+export class PasswordResetFinishComponent implements OnInit {
 
   initialized = false;
-  // doNotMatch = false;
-  // error = false;
-  // success = false;
   key = '';
 
   fieldTextType: boolean;
@@ -55,18 +50,21 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    if (this.newPassword) {
-      this.newPassword.nativeElement.focus();
-    }
-  }
+  // ngAfterViewInit(): void {
+  //   if (this.newPassword) {
+  //     this.newPassword.nativeElement.focus();
+  //   }
+  // }
 
   get f(): { [key: string]: AbstractControl } {
     return this.passwordForm.controls;
   }
 
   finishReset(): void {
+
+
     if (this.passwordForm.invalid) {
+      console.log("hata duruman if e giriyor")
       if (this.f.newPassword.errors.required)
         this.notifcation.showError('newPassword is required', ' Try Again ');
       if (this.f.newPassword.errors.minlength)
@@ -82,11 +80,18 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
       return;
     }
 
+  console.log("hata durumuna girmedi");
+
     const newPassword = this.passwordForm.get(['newPassword'])!.value;
 
-    this.passwordResetFinishService.save(this.key, newPassword).subscribe({
-      next: () => (this.notifcation.showSuccess("şifreniz başarı ile yenilendi","tebrikler")),
-      error: () => (this.notifcation.showError("bir hata oluştu şifre yenilenemedi","tekrar deneyin")),
+    console.log("şifre", newPassword);
+    
+    this.passwordResetFinishService.save(this.key, newPassword).subscribe(()=>{
+      this.notifcation.showSuccess("","işlem başarılı")
+      console.log("işlem başarılı");
+    },
+    err=>{
+      this.notifcation.showError("","işlem başarısız");
     });
 
     //const newPassword = this.passwordForm.get(['newPassword'])!.value;

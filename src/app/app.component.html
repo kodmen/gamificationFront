@@ -1,5 +1,5 @@
 <ng-container [ngSwitch]="currentRoute">
-  <ng-container *ngFor="let url of ['/', '#', ' ']">
+  <ng-container *ngFor="let url of ['/', '#', ' ','/sendMail','/dersler']">
     <ng-container *ngSwitchCase="url">
       <div class="container-fluidwidth">
         <app-header></app-header>
