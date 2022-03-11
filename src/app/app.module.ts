@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
 import { DerslerComponent } from './dersler/dersler.component';
+import { CtaEventComponent } from './components/cta-event/cta-event.component';
+import { FeatureComponent } from './components/feature/feature.component';
+import { OurTeamComponent } from './components/our-team/our-team.component';
+import { NeedHelpComponent } from './components/need-help/need-help.component';
+import { PagesModule } from './pages/pages.module';
+import {YouTubePlayerModule} from '@angular/youtube-player';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 
 @NgModule({
@@ -41,7 +48,12 @@ import { DerslerComponent } from './dersler/dersler.component';
     HomeComponent,
     JrSwitchCasesDirective,
     JumbotronHomeComponent,
-    DerslerComponent
+    DerslerComponent,
+    CtaEventComponent,
+    FeatureComponent,
+    OurTeamComponent,
+    NeedHelpComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +65,11 @@ import { DerslerComponent } from './dersler/dersler.component';
     NgbModule,
     AlertModule,
     SharedModule,
+    YouTubePlayerModule,
+    PagesModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    
   ],
   providers: [
     {
@@ -63,6 +78,7 @@ import { DerslerComponent } from './dersler/dersler.component';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[VideoPlayerComponent]
 })
 export class AppModule { }

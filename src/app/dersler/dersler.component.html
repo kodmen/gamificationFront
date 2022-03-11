@@ -1,4 +1,4 @@
-
+<!-- 
 
 <div class="container pb-5">
 	<div class="row">
@@ -6,9 +6,10 @@
 			<div class="lc-block mb-4"><span editable="inline" class="small mt-4 d-block">2022/2023</span>
 				<h2 editable="inline" class="display-2 mb-0"><b>Derslerimiz</b></h2>
 				<p editable="inline"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id<br> ligula malesuada placerat sit amet quis enim.</p>
-			</div><!-- /lc-block -->
+			</div>
 		</div>
 	</div>
+ 
 	<div class="row mt-4 text-center">
 		<ng-container *ngFor="let ders of dersler ">
 		<div class="col-lg-4 col-md-6 text-dark my-2">
@@ -37,7 +38,43 @@
 		</div>
 		</ng-container>
 	</div>
-</div>
+</div> -->
+<div class="container">
+    <div class="row pt-5 m-auto">
+         <ng-container *ngFor="let ders of dersler ">
+
+      <div class="col-md-6 col-lg-4 pb-3">
+ <!-- Copy the content below until next comment -->
+
+ <div class="card card-custom bg-white border-white border-0">
+    <!-- <div *ngIf="ders.resim">
+        <a (click)="openFile(ders.resim, ders.resimContentType)">
+          <img [src]="'data:' + ders.resimContentType + ';base64,' + ders.resim" style="max-width: 100%" alt="ders image" />
+        </a>
+        {{ ders.resimContentType }}, {{ byteSize(ders.resim) }}
+      </div> -->
+
+      <ng-container *ngIf="ders.resim">
+    <!-- <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div> -->
+    <div class="card-custom-img" [style]="getUrlImage('data:' + ders.resimContentType + ';base64,' + ders.resim)"></div>
+
+      </ng-container>
+   
+    <div class="card-body" style="overflow-y: auto">
+      <h4 class="card-title">{{ders.isim}}</h4>
+      <p class="card-text">{{aciklamaYaziSabitle(ders.aciklama)}} </p>
+    </div>
+    <div class="card-footer" style="background: inherit; border-color: inherit;">
+      <a class="btn btn-primary" [routerLink]="['/ders-detay',ders.id]"  >içerik</a>
+      <a href="#" class="btn btn-outline-primary ml-1">derse katıl</a>
+    </div>
+  </div>
+
+  <!-- Copy until here -->
+      </div>
+     </ng-container>
+    </div></div>
+
 
 
 

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-9">
+            <youtube-player [width]="854" [height]="480" videoId="{{this.getVideoId(bolum.videoLink)}}"></youtube-player>
+        </div>
+        <div class="col-md-3">
+            <h1>{{bolum.bolumBaslik}}</h1>
+            <ul class="list-group ">
+                
+                <li class="list-group-item">kazanılan puan {{bolum.puan}}</li>
+                <li class="list-group-item">tamamlama süresi {{bolum.sure}} Dk</li>
+
+              </ul>
+        </div>
+        
+    </div>
+    <div class="row mb-5 mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                  Döküman 
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{bolum.bolumBaslik}}</h5>
+                  <p class="card-text">{{bolum.dokuman}}</p>
+                  <a href="#" class="btn btn-primary">Teste başla</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

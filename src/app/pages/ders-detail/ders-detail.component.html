@@ -1,0 +1,62 @@
+<!-- <div class="container py-5 mb-4 bg-light rounded-3" [style]="
+    getUrlImage('data:' + ders.resimContentType + ';base64,' + ders.resim)
+  ">
+    <div class="p-5 mb-4 lc-block">
+        <div class="lc-block">
+            <div editable="rich">
+                <h2 class="fw-bolder display-3">{{ ders.isim }}</h2>
+            </div>
+        </div>
+        <div class="lc-block col-md-8">
+            <div editable="rich">
+                <p class="lead">{{ ders.aciklama }}</p>
+            </div>
+        </div>
+        <div class="lc-block">
+            <a class="btn btn-primary" href="#" role="button">Derse başla</a>
+        </div>
+    </div>
+</div> -->
+
+<div class="jumbotron">
+    <div class="container text-center text-lg-left">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-4">
+                    <span class="highlight-word">{{ ders.isim }}</span>
+                </h1>
+                <p class="lead">
+                    {{ ders.aciklama }}
+                </p>
+                <span class="text-center d-inline-block">
+                    <a class="btn btn-primary btn-lg w-100" href="#" role="button">Derse katıl</a>
+                </span>
+            </div>
+            <div class="col-lg-4 align-items-center d-flex">
+                <img [src]="'data:' + ders.resimContentType + ';base64,' + ders.resim" alt="" class="img-fluid" />
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="container mt-4">
+
+    <div class="container mb-5">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h6 class="text-muted"><h1>{{mufredat.mufredatBaslik}}</h1></h6> 
+            <ul class="list-group list-group-flush">
+                <ng-container *ngFor="let bolum of mufredat.bolumlers; index as i">
+                <li  [routerLink]="['../../ders-detay/konu',bolum.id]"  class="list-group-item"><h3>{{i+1}} - {{bolum.bolumBaslik}}</h3></li>
+                
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+</div> 
+
+<div class="container">
+
+<app-form-message [comments]="ders.dersForm"></app-form-message>
+</div>
