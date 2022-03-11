@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlogComponent } from './blog/blog.component';
 import { DerslerComponent } from './dersler/dersler.component';
+import { BlogDetayComponent } from './pages/blog-detay/blog-detay.component';
 import { BolumDetayComponent } from './pages/bolum-detay/bolum-detay.component';
 import { DersDetailComponent } from './pages/ders-detail/ders-detail.component';
 import { AccountActiveComponent } from './shared/account-active/account-active.component';
@@ -24,6 +26,8 @@ export const routes: Routes = [
   { path: 'dersler', component: DerslerComponent },
   { path: 'ders-detay/:id', component: DersDetailComponent },
   { path: 'ders-detay/konu/:id', component: BolumDetayComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: BlogDetayComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

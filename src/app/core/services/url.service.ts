@@ -7,7 +7,7 @@ export class UrlService {
 
   constructor() { }
 
-  endpoint: string = 'http://localhost:8080/api';
+  private endpoint: string = 'http://localhost:8080/api';
 
   getUrl(url:string):string{
     return this.endpoint+url;

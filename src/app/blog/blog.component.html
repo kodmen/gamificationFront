@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="display-1  text-center text-uppercase">Blog</h1>
+
+    <div class="row">
+        <ng-container *ngFor="let e of entries">
+
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+                <div class="card">
+                    <img class="card-img-custom " [src]="'data:' + e.fotoContentType + ';base64,' + e.foto" alt="Bologna">
+                    <div class="card-body">
+                        <h4 class="card-title">{{this.resimService.aciklamaYaziSabitle(e.title,30)}}</h4>
+                        <small class="text-muted cat">
+                            <i class="far fa-clock text-info"></i> {{chanceTime(e.date)}}
+                        </small>
+                        <p class="card-text">{{this.resimService.aciklamaYaziSabitle(e.content)}}</p>
+                        <a [routerLink]="['./',e.id]" class="btn btn-info">detay</a>
+                        <hr>
+                        <ng-container *ngFor="let tag of e.tags">
+                        <button type="button" (click)="parametleriCagir(tag.name)" class="btn btn-light btn-sm ml-1">{{tag.name}}
+                        </button>
+                        </ng-container>
+                    </div>
+
+                </div>
+
+        </div>
+    </ng-container>
+
+    </div>
+</div>

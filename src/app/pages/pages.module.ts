@@ -7,10 +7,12 @@ import { BolumDetayComponent } from './bolum-detay/bolum-detay.component';
 import { VideoPlayerComponent } from '../components/video-player/video-player.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { FormMessageComponent } from './form-message/form-message.component';
+import { AppModule } from '../app.module';
+import { BlogDetayComponent } from './blog-detay/blog-detay.component';
 
 
 @NgModule({
-  declarations: [DersDetailComponent, BolumDetayComponent, FormMessageComponent],
-  imports: [CommonModule, PagesRoutingModule,YouTubePlayerModule ]
+  declarations: [DersDetailComponent, BolumDetayComponent, FormMessageComponent, BlogDetayComponent],
+  imports: [CommonModule, PagesRoutingModule,YouTubePlayerModule]
 })
 export class PagesModule {}

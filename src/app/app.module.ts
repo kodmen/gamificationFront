@@ -33,6 +33,7 @@ import { NeedHelpComponent } from './components/need-help/need-help.component';
 import { PagesModule } from './pages/pages.module';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     FeatureComponent,
     OurTeamComponent,
     NeedHelpComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
