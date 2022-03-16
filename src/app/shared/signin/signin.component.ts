@@ -86,7 +86,7 @@ export class SigninComponent implements OnInit {
     this.authService.signIn(this.signinForm.value).subscribe(
       (res) => {
         localStorage.setItem('access_token', res.id_token);
-        this.router.navigate(['home']);
+        this.router.navigate(['profil']);
         //this.notifcation.showSuccess("tebrikler")
       },
       (err) => {

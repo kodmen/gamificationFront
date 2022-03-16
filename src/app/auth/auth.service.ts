@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { CurrentUser } from '../core/models/currentUser';
 import { RegisterUser } from '../core/models/registerUser';
 import { JhipsterUser } from '../core/models/jhipsteruser';
+import { IUser } from '../entities/user-management';
 
 @Injectable({
   providedIn: 'root',
@@ -24,14 +25,12 @@ export class AuthService {
     .set('Content-Type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
 
-  currentUser: CurrentUser;
+  private currentUser: CurrentUser;
 
   constructor(private http: HttpClient, public router: Router) {}
 
-  // Sign-up
   signUp(user: RegisterUser): Observable<{}> {
-    // user.authorities = ["ROLE_USER"];
-    // user.activated = true;
+
     let api = `${this.endpoint}/register`;
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
@@ -58,7 +57,7 @@ export class AuthService {
   }
 
   // User profile
-  getUserProfile(): Observable<any> {
+  getUserProfile(): Observable<IUser> {
     let api = `${this.endpoint}/account`;
     return this.http.get<any>(api, { headers: this.headers }).pipe(
       map((res: Response) => {
