@@ -12,6 +12,7 @@ import { AccountActiveComponent } from './shared/account-active/account-active.c
 import { PasswordResetFinishComponent } from './shared/account/password-reset-finish/password-reset-finish.component';
 import { PasswordResetInitComponent } from './shared/account/password-reset-init/password-reset-init.component';
 import { HomeComponent } from './shared/home/home.component';
+import { KayitliDerslerComponent } from './shared/kayitli-dersler/kayitli-dersler.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { SigninComponent } from './shared/signin/signin.component';
@@ -35,6 +36,7 @@ export const routes: Routes = [
   { path: 'hakkimizda', component: HakkimizdaComponent },
   { path: 'iletisim', component: IletisimComponent },
   { path: 'profil', component: ProfileComponent , canActivate: [AuthGuard]},
+  { path: 'kayitli-dersler', component: KayitliDerslerComponent , canActivate: [AuthGuard]},
   { path: '**', component: NotFoundComponent },
 ];
 

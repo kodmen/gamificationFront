@@ -13,6 +13,7 @@ import { CurrentUser } from '../core/models/currentUser';
 import { RegisterUser } from '../core/models/registerUser';
 import { JhipsterUser } from '../core/models/jhipsteruser';
 import { IUser } from '../entities/user-management';
+import { PasswordChange } from '../entities/passwordChange.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,6 @@ export class AuthService {
   constructor(private http: HttpClient, public router: Router) {}
 
   signUp(user: RegisterUser): Observable<{}> {
-
     let api = `${this.endpoint}/register`;
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
@@ -67,21 +67,20 @@ export class AuthService {
     );
   }
 
-    //active user 
-    activeUser(key:number):Observable<any>{
+  //active user
+  activeUser(key: number): Observable<any> {
+    let api = `${this.endpoint}/activate`;
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('key', key);
 
-      let api = `${this.endpoint}/activate`;
-      let queryParams = new HttpParams();
-      queryParams = queryParams.append("key",key);
-   
-      //return this.http.get<UserInformation>(url,{params:queryParams});
-      return this.http.get<any>(api,{params:queryParams}).pipe(
-        map((res: Response) => {
-          return res || {};
-        }),
-        catchError(this.handleError)
-      );
-    }
+    //return this.http.get<UserInformation>(url,{params:queryParams});
+    return this.http.get<any>(api, { params: queryParams }).pipe(
+      map((res: Response) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
 
   // Error
   handleError(error: HttpErrorResponse) {
@@ -96,5 +95,7 @@ export class AuthService {
     return throwError(msg);
   }
 
-
+  changePassword(passChange:PasswordChange):Observable<any>{
+    return this.http.post(this.endpoint+"/account/change-password",passChange);
+  }
 }

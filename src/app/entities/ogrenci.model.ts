@@ -1,3 +1,4 @@
+import { Account } from "./account.model";
 import { IKayit } from "./kayit.model";
 import { IRozet } from "./rozet.model";
 import { IUser } from "./user.model";
@@ -18,7 +19,7 @@ export interface IOgrenci {
       public level?: number | null,
       public aciklama?: string | null,
       public toplamPuan?: number | null,
-      public studentUser?: IUser | null,
+      public studentUser?: Account | null,
       public kayitlar2s?: IKayit[] | null,
       public rozetlers?: IRozet[] | null
     ) {}

@@ -34,6 +34,7 @@ import { PagesModule } from './pages/pages.module';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { BlogComponent } from './blog/blog.component';
+import { TekDersComponent } from './components/tek-ders/tek-ders.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { BlogComponent } from './blog/blog.component';
     OurTeamComponent,
     NeedHelpComponent,
     VideoPlayerComponent,
-    BlogComponent
+    BlogComponent,
+    TekDersComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,7 @@ import { BlogComponent } from './blog/blog.component';
       multi: true
     }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   exports:[VideoPlayerComponent]
 })

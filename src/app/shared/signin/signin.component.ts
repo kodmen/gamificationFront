@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   signinForm: FormGroup;
   hata = false;
   submitted = false;
-
+// utf türkçe karakter hasası olabilir
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,

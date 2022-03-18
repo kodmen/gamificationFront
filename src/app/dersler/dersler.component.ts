@@ -45,22 +45,19 @@ export class DerslerComponent implements OnInit {
         console.log(res);
         this.alertService.showSuccess("tebrikler kayit başaralı","basarili")
         
+      },err=>{
+        console.log(err);
+        
+        this.alertService.showError(err.error.title, 'HATA');
       })
     } else {
-      this.alertService.showError('lütfen giriş yapın', 'hata');
+      this.alertService.showError('lütfen giriş yapın', 'HATA');
       // login sayfasına göndermeli
     }
   }
 
   ngOnInit(): void {
     this.loadAll();
-    // this.dersService.getAll().subscribe((res)=>{
-    //   this.dersler = res;
-    //   console.log("dersler listeleme");
-
-    //   console.log(res)
-
-    // })
   }
 
   getUrlImage(img: string) {

@@ -1,0 +1,41 @@
+<h1>kayitli dersler</h1>
+
+<!-- <ng-container *ngFor="let ders of dersler">
+    <app-tek-ders  ></app-tek-ders>
+    
+</ng-container> -->
+
+
+<div class="container">
+    <h1 class="display-1  text-center text-uppercase">Dersler</h1>
+
+    <div class="row pt-5 m-auto">
+        <ng-container *ngFor="let ders of dersler ">
+
+            <div class="col-md-6 col-lg-4 pb-3">
+
+                <div class="card card-custom bg-white border-white border-0">
+                    <ng-container *ngIf="ders.aitOldDers.resim">
+                        <div class="card-custom-img"
+                            [style]="resimService.getUrlImage('data:' + ders.aitOldDers.resimContentType + ';base64,' + ders.aitOldDers.resim)"></div>
+
+                    </ng-container>
+
+                    <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title">{{ders.aitOldDers.isim}}</h4>
+                        <h5 class="card-title">Toplanan puan {{ders.puan}}</h5>
+                        <p class="card-text">{{resimService.aciklamaYaziSabitle(ders.aitOldDers.aciklama)}} </p>
+
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a class="btn btn-primary " [routerLink]="['/ders-detay',ders.aitOldDers.id]">içerik</a>
+                        <a class="btn btn-primary ml-1 " [routerLink]="['/ders-detay',ders.aitOldDers.id]">analizler</a>
+
+                        <!-- <a (click)="derseKatil(ders.id)" class="btn btn-outline-primary ml-1">derse katıl</a> -->
+                    </div>
+                </div>
+
+            </div>
+        </ng-container>
+    </div>
+</div>
