@@ -13,6 +13,7 @@ export class KayitliDerslerComponent implements OnInit {
 
   constructor(private kayitService:KayitService,private alertService:NotificationService,public resimService:ResimService) { }
   dersler?:Kayit[];
+  
   ngOnInit(): void {
     this.getKayit();    
   }

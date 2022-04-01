@@ -6,7 +6,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { KayitliDerslerComponent } from './kayitli-dersler/kayitli-dersler.component';
 import { TekDersComponent } from '../components/tek-ders/tek-ders.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagesModule } from '../pages/pages.module';
 
 
 
@@ -15,9 +16,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PagesModule
+
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  exports:[ShowSendMailComponent,FooterComponent,KayitliDerslerComponent]
+  exports:[ShowSendMailComponent, FooterComponent,FooterComponent, ProfileComponent, KayitliDerslerComponent,CommonModule,FormsModule]
 })
 export class SharedModule { }

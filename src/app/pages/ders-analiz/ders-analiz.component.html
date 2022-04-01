@@ -1,0 +1,40 @@
+<ng-container *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Bölüm</th>
+            <th scope="col">toplam çözülen</th>
+            <th scope="col">doğru sayisi</th>
+            <th scope="col">yanliş sayisi</th>
+            <th scope="col">tamamlandi</th>
+
+        </tr>
+    </thead>
+    <tbody> 
+
+    <ng-container *ngFor="let analiz of kayit.dersAnalizleris; index as analizIndex;">
+
+        <tr>
+            <th scope="row">{{analizIndex}}</th>
+            <td>{{analiz.aitOldBolum.bolumBaslik}}</td>
+            <td>{{analiz.cozulenSoru}}</td>
+            <td>{{analiz.toplamDogru}}</td>
+            <td>{{analiz.toplamYanlis}}</td>
+            <td>{{analiz.tamamlandi}}</td>
+        </tr>
+         </ng-container>
+
+    </tbody>
+</table>
+
+    
+  
+
+</ng-container>

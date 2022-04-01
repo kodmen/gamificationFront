@@ -1,11 +1,18 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS,HttpClientJsonpModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+  HttpClientJsonpModule,
+} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 
 import { AuthInterceptor } from './auth/authconfig.interceptor';
 import { SigninComponent } from './shared/signin/signin.component';
@@ -31,11 +38,12 @@ import { FeatureComponent } from './components/feature/feature.component';
 import { OurTeamComponent } from './components/our-team/our-team.component';
 import { NeedHelpComponent } from './components/need-help/need-help.component';
 import { PagesModule } from './pages/pages.module';
-import {YouTubePlayerModule} from '@angular/youtube-player';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { BlogComponent } from './blog/blog.component';
 import { TekDersComponent } from './components/tek-ders/tek-ders.component';
-
+import { MyInitService } from './core/services/my-init.service';
+import { Pages2Module } from './pages-2/pages-2.module';
 
 @NgModule({
   declarations: [
@@ -57,7 +65,7 @@ import { TekDersComponent } from './components/tek-ders/tek-ders.component';
     NeedHelpComponent,
     VideoPlayerComponent,
     BlogComponent,
-    TekDersComponent
+    TekDersComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,21 +77,28 @@ import { TekDersComponent } from './components/tek-ders/tek-ders.component';
     NgbModule,
     AlertModule,
     SharedModule,
+    Pages2Module,
     YouTubePlayerModule,
     PagesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    MyInitService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (myInitService: MyInitService) => () =>myInitService.initCheck(),
+      deps: [MyInitService],
+      multi: true,
+    },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
-  exports:[VideoPlayerComponent]
+  exports: [VideoPlayerComponent],
 })
-export class AppModule { }
+export class AppModule {}

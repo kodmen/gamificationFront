@@ -14,7 +14,12 @@ export class HeaderComponent implements OnInit {
     keepAfterRouteChage: false,
 
   };
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // if(this.authService.isLoggedIn){
+    //   this.authService.doLogout();
+    //   // burda her istekten sonra kullanıcı jwt token süresi kontrol edilebilir
+    // }
+  }
 
   logout() {
     this.authService.doLogout()

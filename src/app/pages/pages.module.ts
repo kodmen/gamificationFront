@@ -11,10 +11,15 @@ import { AppModule } from '../app.module';
 import { BlogDetayComponent } from './blog-detay/blog-detay.component';
 import { HakkimizdaComponent } from './hakkimizda/hakkimizda.component';
 import { IletisimComponent } from './iletisim/iletisim.component';
+import { KullaniciDetayComponent } from './kullanici-detay/kullanici-detay.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { DersAnalizComponent } from './ders-analiz/ders-analiz.component';
 
 
 @NgModule({
-  declarations: [DersDetailComponent, BolumDetayComponent, FormMessageComponent, BlogDetayComponent, HakkimizdaComponent, IletisimComponent],
-  imports: [CommonModule, PagesRoutingModule,YouTubePlayerModule]
+  declarations: [DersDetailComponent, BolumDetayComponent, FormMessageComponent, BlogDetayComponent, HakkimizdaComponent, IletisimComponent, KullaniciDetayComponent, DersAnalizComponent],
+  imports: [CommonModule, PagesRoutingModule,YouTubePlayerModule],
+  exports:[DersDetailComponent, BolumDetayComponent, FormMessageComponent, BlogDetayComponent, HakkimizdaComponent, IletisimComponent, KullaniciDetayComponent,CommonModule,FormsModule]
 })
 export class PagesModule {}

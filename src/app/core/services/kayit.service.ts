@@ -17,4 +17,8 @@ export class KayitService {
   getAllKayitByOgrenci(): Observable<Kayit[]> {
     return this.http.get<Kayit[]>(this.urlService.getUrl('/kayit'));
   }
+
+  getKayitById(id:number):Observable<Kayit>{
+    return this.http.get<Kayit>(this.urlService.getUrl('/kayits/'+id));
+  }
 }

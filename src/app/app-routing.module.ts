@@ -5,9 +5,11 @@ import { BlogComponent } from './blog/blog.component';
 import { DerslerComponent } from './dersler/dersler.component';
 import { BlogDetayComponent } from './pages/blog-detay/blog-detay.component';
 import { BolumDetayComponent } from './pages/bolum-detay/bolum-detay.component';
+import { DersAnalizComponent } from './pages/ders-analiz/ders-analiz.component';
 import { DersDetailComponent } from './pages/ders-detail/ders-detail.component';
 import { HakkimizdaComponent } from './pages/hakkimizda/hakkimizda.component';
 import { IletisimComponent } from './pages/iletisim/iletisim.component';
+import { KullaniciDetayComponent } from './pages/kullanici-detay/kullanici-detay.component';
 import { AccountActiveComponent } from './shared/account-active/account-active.component';
 import { PasswordResetFinishComponent } from './shared/account/password-reset-finish/password-reset-finish.component';
 import { PasswordResetInitComponent } from './shared/account/password-reset-init/password-reset-init.component';
@@ -35,8 +37,15 @@ export const routes: Routes = [
   { path: 'blog/:id', component: BlogDetayComponent },
   { path: 'hakkimizda', component: HakkimizdaComponent },
   { path: 'iletisim', component: IletisimComponent },
-  { path: 'profil', component: ProfileComponent , canActivate: [AuthGuard]},
+  { // lazy load the blog component
+    path: 'sorular',
+    loadChildren: () =>
+      import('./pages-2/pages-2.module').then((m) => m.Pages2Module),
+  },
+  { path: 'profil-ayarlar', component: ProfileComponent , canActivate: [AuthGuard]},
+  { path: 'profil', component: KullaniciDetayComponent , canActivate: [AuthGuard]},
   { path: 'kayitli-dersler', component: KayitliDerslerComponent , canActivate: [AuthGuard]},
+  { path: 'ders-analiz/:id', component: DersAnalizComponent , canActivate: [AuthGuard]},
   { path: '**', component: NotFoundComponent },
 ];
 

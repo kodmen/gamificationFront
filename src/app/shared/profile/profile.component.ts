@@ -109,6 +109,12 @@ export class ProfileComponent implements OnInit {
             Validators.maxLength(50),
           ],
         ],
+        bio: [
+          this.ogrenci.aciklama,
+          [
+            Validators.maxLength(250),
+          ],
+        ],
         langKey: [this.ogrenci.studentUser.langKey],
       });
 
@@ -142,6 +148,13 @@ export class ProfileComponent implements OnInit {
     this.account.langKey = this.settingsForm.get('langKey')!.value;
     this.account.imageUrl = this.settingsForm.get('imageUrl')!.value;
 
+    if(this.settingsForm.get('imageUrl')!.value){
+      console.log("aciklama ",this.settingsForm.get('imageUrl')!.value);
+      console.log("ogr id",this.ogrenci.id);
+      
+      this.ogrenciBioUpdate();
+    }
+
     this.accountService.save(this.account).subscribe(
       (res) => {
         this.success = true;
@@ -151,6 +164,16 @@ export class ProfileComponent implements OnInit {
         console.log('accautn servis gönderilemedi');
       }
     );
+  }
+
+  ogrenciBioUpdate(){
+    this.ogrenci.aciklama = this.settingsForm.get('bio')!.value;
+
+    this.ogrenciService.partialUpdate(this.ogrenci).subscribe(res=>{
+      this.alertService.showSuccess("org bio güncellendi","başarılı");
+    },err=>{
+      this.alertService.showError("başarısız acıklama güncellenemedi","Error");
+    })
   }
 
   //+++++++++++++++++
