@@ -47,7 +47,7 @@ export class AuthService {
   get isLoggedIn(): boolean {
 
     let authToken = localStorage.getItem('access_token');
-    console.log("accses token geliyor", authToken);
+    //console.log("accses token geliyor", authToken);
     
     return authToken !== null ? true : false;
   }

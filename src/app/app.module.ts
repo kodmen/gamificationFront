@@ -44,6 +44,8 @@ import { BlogComponent } from './blog/blog.component';
 import { TekDersComponent } from './components/tek-ders/tek-ders.component';
 import { MyInitService } from './core/services/my-init.service';
 import { Pages2Module } from './pages-2/pages-2.module';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { Pages2Module } from './pages-2/pages-2.module';
     PagesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    PdfViewerModule
   ],
   providers: [
     {

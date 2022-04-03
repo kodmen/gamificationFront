@@ -23,7 +23,9 @@ import { SignupComponent } from './shared/signup/signup.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: 'log-in', component: SigninComponent },
+
   { path: 'sign-up', component: SignupComponent },
   { path: 'sifre-unuttum', component: PasswordResetInitComponent },
   { path: 'yeni-sifre/:key', component: PasswordResetFinishComponent },
@@ -38,9 +40,9 @@ export const routes: Routes = [
   { path: 'hakkimizda', component: HakkimizdaComponent },
   { path: 'iletisim', component: IletisimComponent },
   { // lazy load the blog component
-    path: 'sorular',
+    path: 'testler',
     loadChildren: () =>
-      import('./pages-2/pages-2.module').then((m) => m.Pages2Module),
+      import('./pages-2/pages-2.module').then((m) => m.Pages2Module),canActivate: [AuthGuard]
   },
   { path: 'profil-ayarlar', component: ProfileComponent , canActivate: [AuthGuard]},
   { path: 'profil', component: KullaniciDetayComponent , canActivate: [AuthGuard]},

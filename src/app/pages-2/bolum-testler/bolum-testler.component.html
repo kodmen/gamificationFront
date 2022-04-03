@@ -1,1 +1,23 @@
-<p>gelen sorular hallolur</p>
+<div class="container">
+    <div class="row">
+
+<ng-container *ngIf="isLoading">
+    <app-loading></app-loading>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+    <ng-container *ngFor="let t of sorular">
+        <div class="card me-3 border border-warning border-3" style="width: 18rem;">
+            <div class="card-body ">
+                <h5 class="card-title">{{t.tesBaslik}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{t.soruSayisi ? t.soruSayisi + " soru" : ""}} </h6>
+                <p class="card-text">kolay</p>
+                <a [routerLink]="['./',t.id]" class="btn btn-primary">Test çöz</a>
+            </div>
+        </div>
+
+    </ng-container>
+</ng-container>
+
+    </div>
+
+</div>

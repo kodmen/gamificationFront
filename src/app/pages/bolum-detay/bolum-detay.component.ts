@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BolumService } from 'src/app/core/services/bolum.service';
 import { IBolum } from 'src/app/entities/bolum.model';
+import { NotificationService } from 'src/app/core/services/notification.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-bolum-detay',
@@ -11,7 +13,10 @@ import { IBolum } from 'src/app/entities/bolum.model';
 export class BolumDetayComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private bolumService: BolumService
+    private bolumService: BolumService,
+    private authService:AuthService,
+    private notificationService:NotificationService,
+    public router: Router,
   ) {}
 
   public bolum: IBolum;
@@ -52,4 +57,17 @@ export class BolumDetayComponent implements OnInit {
     }
     return video_id;
   }
+
+  testSayfasinaGit(bolum:string){
+    if(!this.authService.isLoggedIn){
+      this.notificationService.showError("sisteme giriş yapmalısınız","Hata");
+    }else{
+          this.router.navigate(['/testler',bolum]);
+
+    }
+
+  }
+
+
+
 }

@@ -24,7 +24,9 @@
                 <div class="card-body">
                   <h5 class="card-title">{{bolum.bolumBaslik}}</h5>
                   <p class="card-text">{{bolum.dokuman}}</p>
-                  <a href="#" class="btn btn-primary">Teste başla</a>
+                  <a (click)="testSayfasinaGit(bolum.bolumBaslik)" class="btn btn-primary">Teste başla</a>
+
+                  <!-- <a [routerLink]="['/testler',bolum.bolumBaslik]" class="btn btn-primary">Teste başla</a> -->
                 </div>
               </div>
         </div>
