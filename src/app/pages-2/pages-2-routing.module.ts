@@ -5,10 +5,7 @@ import { TestDetayComponent } from './test-detay/test-detay.component';
 
 const routes: Routes = [
   { path: ':bolum/:id', component: TestDetayComponent },
-
   { path: ':bolum', component: BolumTestlerComponent },
-
-  
 ];
 
 @NgModule({
