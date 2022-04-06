@@ -4,6 +4,7 @@ import { BolumService } from 'src/app/core/services/bolum.service';
 import { IBolum } from 'src/app/entities/bolum.model';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { KayitService } from 'src/app/core/services/kayit.service';
 
 @Component({
   selector: 'app-bolum-detay',
@@ -14,9 +15,10 @@ export class BolumDetayComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bolumService: BolumService,
-    private authService:AuthService,
-    private notificationService:NotificationService,
+    private authService: AuthService,
+    private notificationService: NotificationService,
     public router: Router,
+    private kayitService: KayitService
   ) {}
 
   public bolum: IBolum;
@@ -36,16 +38,14 @@ export class BolumDetayComponent implements OnInit {
         document.body.appendChild(tag);
         this.apiLoaded = true;
       }
-
     });
   }
 
   getBolum(id: number) {
     this.bolumService.getByIdBolum(id).subscribe((res) => {
       this.bolum = res;
-      console.log("bolum res");
+      console.log('bolum res');
       console.log(res);
-      
     });
   }
 
@@ -58,16 +58,36 @@ export class BolumDetayComponent implements OnInit {
     return video_id;
   }
 
-  testSayfasinaGit(bolum:string){
-    if(!this.authService.isLoggedIn){
-      this.notificationService.showError("sisteme giriş yapmalısınız","Hata");
-    }else{
-          this.router.navigate(['/testler',bolum]);
+  getDersKayitVarMi(bolum: string): boolean {
+    var kayitlimi;;
 
-    }
+    this.kayitService.getKayitlimi(bolum).subscribe((res) => {
+      console.log('res ne geliyor');
+      console.log(res);
 
+      kayitlimi = res;
+      console.log('res kayita atandı');
+      console.log(kayitlimi);
+    });
+
+    return kayitlimi;
   }
 
+  testSayfasinaGit(bolum: string) {
+    // kayitli mi sorgusu yap
+    if (!this.authService.isLoggedIn) {
+      this.notificationService.showError('sisteme giriş yapmalısınız', 'Hata');
+    } else {
+      this.kayitService.getKayitlimi(bolum).subscribe((res) => {
+       
+        if(res){
+          this.router.navigate(['/testler', bolum]);
+        }else{
+          this.notificationService.showError('Derse kayıt olmalısınız', 'Hata');
+        }
 
-
+      });
+     
+    }
+  }
 }

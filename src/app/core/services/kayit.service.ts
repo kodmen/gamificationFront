@@ -21,4 +21,8 @@ export class KayitService {
   getKayitById(id:number):Observable<Kayit>{
     return this.http.get<Kayit>(this.urlService.getUrl('/kayits/'+id));
   }
+
+  getKayitlimi(bolumName:string):Observable<boolean>{
+    return this.http.get<boolean>(this.urlService.getUrl('/kayit/kayitlimi/'+bolumName));
+  }
 }

@@ -1,22 +1,80 @@
 <div class="container">
     <div class="row">
 
-<ng-container *ngIf="isLoading">
-    <app-loading></app-loading>
-</ng-container>
-<ng-container *ngIf="!isLoading">
-    <ng-container *ngFor="let t of sorular">
-        <div class="card me-3 border border-warning border-3" style="width: 18rem;">
-            <div class="card-body ">
-                <h5 class="card-title">{{t.tesBaslik}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{t.soruSayisi ? t.soruSayisi + " soru" : ""}} </h6>
-                <p class="card-text">kolay</p>
-                <a [routerLink]="['./',t.id]" class="btn btn-primary">Test çöz</a>
-            </div>
-        </div>
+        <ng-container *ngIf="isLoading">
+            <app-loading></app-loading>
+        </ng-container>
+        <ng-container *ngIf="!isLoading">
+            <ng-container *ngFor="let t of sorular">
+                <ng-container *ngIf="testAnaliziVarMi(t.id)">
 
-    </ng-container>
-</ng-container>
+                    <div class="card me-3 border border-warning border-3" style="width: 18rem;">
+                        <div class="card-body ">
+                            <div class="position-relative">
+                                <div class="position-absolute top-0 end-0">
+                                    <i class="fa-solid fa-lock-open fa-2xl" style="color: Dodgerblue;"></i>
+                                </div>
+                            </div>
+
+                            <h5 class="card-title">{{t.tesBaslik}}</h5>
+                            <table class="table table-sm m-2">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Topmal Net:</th>
+                                        <td>{{testAnalizGetir(t.id).net | number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Başarı Oranı:</th>
+                                        <td>{{getSussecsRate(testAnalizGetir(t.id),t) | number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Doğru sayisi:</th>
+                                        <td>
+                                            <p class="text-primary mb-0">{{testAnalizGetir(t.id).dogru}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Yanlış sayisi:</th>
+                                        <td>
+                                            <p class="text-danger mb-0">{{testAnalizGetir(t.id).yanlis}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> Boş Sayisi:</th>
+                                        <td>
+                                            <p class="text-secondary mb-0">{{testAnalizGetir(t.id).bos}}</p>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <p class="text-danger mb-0 text-uppercase text-center">test çözüldü tekrar çözülemez</p>
+                        </div>
+                    </div>
+
+                </ng-container>
+                <ng-container *ngIf="!testAnaliziVarMi(t.id)">
+
+                    <div class="card me-3 border border-warning border-3" style="width: 18rem;">
+                        <div class="card-body ">
+                            <div class="position-relative">
+                                <div class="position-absolute top-0 end-0">
+                                    <i class="fa-solid fa-lock fa-2xl" style="color: Dodgerblue;"></i>
+                                </div>
+                            </div>
+                            <h5 class="card-title ">{{t.tesBaslik}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{t.soruSayisi ? t.soruSayisi + " soru" : ""}}
+                            </h6>
+                            <p class="card-text">kolay</p>
+                            <a [routerLink]="['./',t.id]" class="btn btn-primary">Test çöz</a>
+                        </div>
+                    </div>
+
+                </ng-container>
+
+
+            </ng-container>
+        </ng-container>
 
     </div>
 

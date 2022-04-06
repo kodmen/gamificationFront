@@ -78,8 +78,8 @@
                 <form class="login-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
                  
                   <div class="single-input">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" formControlName="username" placeholder="username" placeholder="Your Email"
+                    <label for="login-email">UserName</label>
+                    <input type="text" id="login-email" formControlName="username" placeholder="username" placeholder="Enter Your UserName"
                     [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                     <i class="lni lni-envelope"></i>
                   </div>

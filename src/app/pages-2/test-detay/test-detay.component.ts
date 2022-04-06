@@ -91,8 +91,8 @@ export class TestDetayComponent implements OnInit {
         this.sinavSonuc = true;
       },
       (err) => {
-        this.notification.showError('sunucu hatasi', 'hata');
-        console.log(err);
+        this.notification.showError(err.error.title, 'hata');
+        console.log(err.error.title);
         console.log('cevap gönderilemedi ');
       }
     );

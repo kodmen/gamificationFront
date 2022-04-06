@@ -5,20 +5,17 @@
         </ng-container>
         <ng-container *ngIf="!isLoading">
             <div class="row">
+                <h5 class="text-center">{{ test.tesBaslik }}</h5>
 
                 <div class="col-md-9 col-sm-12">
-
                     <pdf-viewer class="border border-primary" [src]="getPdfFormat(test.soruPdfFile)"
                         [original-size]="false" style="height: 700px; width: 900px" [render-text]="false"></pdf-viewer>
                 </div>
 
                 <div class="col-md-3 col-sm-12">
                     <ng-container *ngIf="!sinavSonuc">
-                        <h5 class="card-title">{{ test.tesBaslik }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            {{ test.soruSayisi ? test.soruSayisi + " soru" : "" }}
-                        </h6>
-
+                        
+                    
                         <form [formGroup]="form">
                             <div class="input-field d-none">
                                 <input matInput type="text" name="email" formControlName="testId">
@@ -29,30 +26,34 @@
                                     <table class="table table-sm border border-dark border-2 m-2">
                                         <tbody>
                                             <tr>
-                                                
+
                                                 <div class="radio-toolbar d-flex justify-content-end">
-                                                    <th scope="row" class="mx-auto my-auto" >{{i+1}}</th>
-                                                    <td scope="col"><input type="radio" value="A" [id]="'answerA'+i" name="answer"
-                                                            formControlName="answer" ><label
+                                                    <th scope="row" class="mx-auto my-auto">{{i+1}}</th>
+                                                    <td scope="col"><input type="radio" value="A" [id]="'answerA'+i"
+                                                            name="answer" formControlName="answer"><label
                                                             [for]="'answerA'+i">A</label>
                                                     </td>
-                                                    <td scope="col"><input type="radio" value="B" id="answerB" [id]="'answerB'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td scope="col"><input type="radio" value="B" id="answerB"
+                                                            [id]="'answerB'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerB'+i">B</label>
                                                     </td>
-                                                    <td scope="col"><input type="radio" value="C" id="answerC" [id]="'answerC'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td scope="col"><input type="radio" value="C" id="answerC"
+                                                            [id]="'answerC'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerC'+i">C</label>
                                                     </td>
-                                                    <td scope="col"><input type="radio" value="D" id="answerD" [id]="'answerD'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td scope="col"><input type="radio" value="D" id="answerD"
+                                                            [id]="'answerD'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerD'+i">D</label>
                                                     </td>
-                                                    <td scope="col"><input type="radio" value="E" id="answerE" [id]="'answerE'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td scope="col"><input type="radio" value="E" id="answerE"
+                                                            [id]="'answerE'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerE'+i">E</label>
                                                     </td>
-                                                    
+
                                                     <td scope="col">
                                                         <input type="radio" value="" [id]="'answerBos'+i" name="answer"
                                                             formControlName="answer" checked>
@@ -80,11 +81,8 @@
                     <ng-container *ngIf="sinavSonuc">
 
                         <h5 class="card-title">{{ test.tesBaslik }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            {{ test.soruSayisi ? test.soruSayisi + " soru" : "" }}
-                        </h6>
                         <ng-container *ngIf="!resultIsLoading">
-                            <table class="table table-sm m-2" >
+                            <table class="table table-sm m-2">
                                 <tbody>
                                     <tr>
                                         <th scope="row">Topmal Net:</th>
@@ -103,14 +101,14 @@
                                         <td>{{examResult.countOfWrong}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">  Boş Sayisi:</th>
+                                        <th scope="row"> Boş Sayisi:</th>
                                         <td>{{examResult.countOfBlank}}</td>
                                     </tr>
-                                    
+
                                 </tbody>
                             </table>
 
-                        
+
                         </ng-container>
 
                         <form [formGroup]="form">
@@ -126,33 +124,36 @@
                                                 <div class="radio-toolbar">
                                                     <th scope="row">{{i+1}}</th>
 
-                                                    <td><input  [attr.disabled]="true" type="radio" value="A" [id]="'answerA'+i" name="answer"
-                                                            formControlName="answer" ><label
+                                                    <td><input [attr.disabled]="true" type="radio" value="A"
+                                                            [id]="'answerA'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerA'+i">A</label>
                                                     </td>
-                                                    <td><input [attr.disabled]="true" type="radio" value="B" id="answerB" [id]="'answerB'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td><input [attr.disabled]="true" type="radio" value="B"
+                                                            id="answerB" [id]="'answerB'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerB'+i">B</label>
                                                     </td>
-                                                    <td><input [attr.disabled]="true" type="radio" value="C" id="answerC" [id]="'answerC'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td><input [attr.disabled]="true" type="radio" value="C"
+                                                            id="answerC" [id]="'answerC'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerC'+i">C</label>
                                                     </td>
-                                                    <td><input [attr.disabled]="true" type="radio" value="D" id="answerD" [id]="'answerD'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td><input [attr.disabled]="true" type="radio" value="D"
+                                                            id="answerD" [id]="'answerD'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerD'+i">D</label>
                                                     </td>
-                                                    <td><input [attr.disabled]="true" type="radio" value="E" id="answerE" [id]="'answerE'+i"
-                                                            name="answer" formControlName="answer"><label
+                                                    <td><input [attr.disabled]="true" type="radio" value="E"
+                                                            id="answerE" [id]="'answerE'+i" name="answer"
+                                                            formControlName="answer"><label
                                                             [for]="'answerE'+i">E</label>
                                                     </td>
                                                     <td>
-                                                        <!-- <div class="radio-toolbar"> -->
-                                                        <input [attr.disabled]="true" type="radio" value="" [id]="'answerBos'+i" name="answer"
-                                                            formControlName="answer" checked>
+                                                        <input [attr.disabled]="true" type="radio" value=""
+                                                            [id]="'answerBos'+i" name="answer" formControlName="answer"
+                                                            checked>
                                                         <label [for]="'answerBos'+i">Bos</label>
-
-                                                        <!-- </div> -->
                                                     </td>
                                                 </div>
                                             </tr>
@@ -163,56 +164,8 @@
                         </form>
                     </ng-container>
 
-
-
-
-
                 </div>
-
-
-
-                <div class="col-md-12">
-
-
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Sınav Sonucu</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <ng-container *ngIf="resultIsLoading">
-                                        <app-loading></app-loading>
-                                    </ng-container>
-                                    <ng-container *ngIf="!resultIsLoading">
-                                        Doğru sayisi - {{examResult.countOfCorrect}}<br>
-                                        Yanlış sayisi - {{examResult.countOfWrong}}<br>
-                                        Boş Sayisi - <br>
-                                        Topmal Net - <br>
-                                        Başarı Oranı - {{getSussecsRate() | number}}
-                                    </ng-container>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Çıkış</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                
             </div>
         </ng-container>
     </div>
