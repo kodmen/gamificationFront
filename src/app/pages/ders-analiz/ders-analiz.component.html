@@ -1,40 +1,56 @@
 <ng-container *ngIf="isLoading">
     <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
-      </div>
+    </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-  
-<table class="table text-center">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Bölüm</th>
-            <th scope="col">toplam çözülen</th>
-            <th scope="col">doğru sayisi</th>
-            <th scope="col">yanliş sayisi</th>
-            <th scope="col">tamamlandi</th>
+    <div class="container">
+        <div class="row">
 
-        </tr>
-    </thead>
-    <tbody> 
+        <h1 class="text-center">{{kayit.aitOldDers.isim}}</h1>
 
-    <ng-container *ngFor="let analiz of kayit.dersAnalizleris; index as analizIndex;">
+            <ng-container *ngFor="let analiz of this.AllDersAnaliz; index as analizIndex;">
+                <div class="col-md-5 border border-info bg-info m-5 p-3">
 
-        <tr>
-            <th scope="row">{{analizIndex}}</th>
-            <td>{{analiz.aitOldBolum.bolumBaslik}}</td>
-            <td>{{analiz.cozulenSoru}}</td>
-            <td>{{analiz.toplamDogru}}</td>
-            <td>{{analiz.toplamYanlis}}</td>
-            <td>{{analiz.tamamlandi}}</td>
-        </tr>
-         </ng-container>
+                    <h1>{{analiz.aitOldBolum.bolumBaslik}}
 
-    </tbody>
-</table>
+                        <ng-container *ngIf="analiz.tamamlandi">
+                            <i class="fa-solid fa-unlock"></i>
+                        </ng-container>
 
-    
-  
+                        <ng-container *ngIf="!analiz.tamamlandi">
+                            <i class="fa-solid fa-lock"></i>
+                        </ng-container>
+                        
+                    
+                    </h1>
+                    <h3 class="progress-title">Doğru sayisi - {{analiz.toplamDogru}} </h3>
+                    <div class="progress">
+                        <div class="progress-bar  bg-success progress-bar-striped active"
+                            [style]="getProgressBarStyle(analiz.cozulenSoru,analiz.toplamDogru)"></div>
+                    </div>
+                    <h3 class="progress-title">Yanliş sayisi - {{analiz.toplamYanlis}} </h3>
+                    <div class="progress">
+                        <div class="progress-bar  bg-danger progress-bar-info progress-bar-striped active"
+                            [style]="getProgressBarStyle(analiz.cozulenSoru,analiz.toplamYanlis)"></div>
+                    </div>
+                    <h3 class="progress-title">Boş sayisi - {{analiz.cozulenSoru}} </h3>
+                    <div class="progress">
+                        <div class="progress-bar  bg-warning progress-bar-info progress-bar-striped active"
+                            [style]="getProgressBarStyle(analiz.cozulenSoru,analiz.cozulenSoru - analiz.toplamYanlis - analiz.toplamDogru)"></div>
+                    </div>
+                </div>
+
+            </ng-container>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
 
 </ng-container>

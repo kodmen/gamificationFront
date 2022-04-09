@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { DersAnalizService } from 'src/app/core/services/ders-analiz.service';
 import { DersService } from 'src/app/core/services/ders.service';
 import { KayitService } from 'src/app/core/services/kayit.service';
 import { MufredatService } from 'src/app/core/services/mufredat.service';
+import { DersAnaliz } from 'src/app/entities/ders-analiz.model';
 
 import { Ders } from 'src/app/entities/ders.model';
 import { IKayit, Kayit } from 'src/app/entities/kayit.model';
@@ -18,13 +21,17 @@ export class DersAnalizComponent implements OnInit {
     private route: ActivatedRoute,
     private kayitService: KayitService,
     private dersService: DersService,
-    private mufredatService:MufredatService
+    private mufredatService: MufredatService,
+    private dersAnalizService: DersAnalizService
   ) {}
 
   kayit?: IKayit;
   ders?: Ders;
   mufredat?: IMufredat;
   isLoading = true;
+  _dersAnaliz = new Subject<DersAnaliz>();
+
+  AllDersAnaliz : DersAnaliz[] = new Array<DersAnaliz>() ;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -34,38 +41,37 @@ export class DersAnalizComponent implements OnInit {
         console.log('geldim hata');
       }
     });
+
+    this.getAllDersAnaliz().subscribe(res=>{
+      this.AllDersAnaliz.push(res)
+    })
   }
 
   getKayit(id: number) {
     this.kayitService.getKayitById(id).subscribe((res) => {
       this.isLoading = false;
       this.kayit = res;
-      this.getDers(this.kayit.aitOldDers.id);
+      this.getDersAnaliz(this.kayit);
     });
   }
 
-  getDers(id: number) {
-    this.dersService.getById(id).subscribe((res) => {
-      this.ders = res;
-      console.log('ders');
-      console.log(this.ders);
-      this.getMufredat(this.ders.dersMufredat.id)
-    });
+  getDersAnaliz(kayit: Kayit) {
+    const obs = new Observable();
+    for (var i = 0; i < kayit.dersAnalizleris.length; i++) {
+      this.dersAnalizService
+        .getDersAnalizById(kayit.dersAnalizleris[i].id)
+        .subscribe((res) => {
+          this._dersAnaliz.next(res);
+        });
+    }
   }
 
-  getMufredat(id: number) {
-    this.mufredatService.getById(id).subscribe(res=>{
-      this.mufredat = res;
-      console.log(this.mufredat);
+  getAllDersAnaliz(): Observable<DersAnaliz> {
+    return this._dersAnaliz.asObservable();
+  }
 
-      for (let index = 0; index < this.kayit.dersAnalizleris.length; index++) {
-       this.kayit.dersAnalizleris[index].aitOldBolum = this.mufredat.bolumlers[index]; 
-      }
-
-      console.log(this.kayit);
-      
-     
-      
-    })
+  getProgressBarStyle(toplamSoru:number, soru:number){
+    var yuzde = (soru * 100 ) / toplamSoru;
+    return `width: ${yuzde}% `;
   }
 }
