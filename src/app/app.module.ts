@@ -45,6 +45,7 @@ import { TekDersComponent } from './components/tek-ders/tek-ders.component';
 import { MyInitService } from './core/services/my-init.service';
 import { Pages2Module } from './pages-2/pages-2.module';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     PagesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    PdfViewerModule
+    PdfViewerModule,
+    OrderModule
   ],
   providers: [
     {

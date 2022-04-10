@@ -27,7 +27,7 @@
           <div class="col-12 col-md-6">
             <h6 class="text-muted"><h1>{{mufredat.mufredatBaslik}}</h1></h6> 
             <ul class="list-group list-group-flush">
-                <ng-container *ngFor="let bolum of mufredat.bolumlers; index as i">
+                <ng-container *ngFor="let bolum of sortedCollection; index as i ">
                 <li  [routerLink]="['../../ders-detay/konu',bolum.id]"  class="list-group-item"><h3>{{i+1}} - {{bolum.bolumBaslik}}</h3></li>
                 
               </ng-container>

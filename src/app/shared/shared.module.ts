@@ -9,18 +9,24 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from '../pages/pages.module';
 
-
-
 @NgModule({
-  declarations: [ShowSendMailComponent, FooterComponent,FooterComponent, ProfileComponent, KayitliDerslerComponent],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    PagesModule
-
+  declarations: [
+    ShowSendMailComponent,
+    FooterComponent,
+    FooterComponent,
+    ProfileComponent,
+    KayitliDerslerComponent,
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  exports:[ShowSendMailComponent, FooterComponent,FooterComponent, ProfileComponent, KayitliDerslerComponent,CommonModule,FormsModule]
+  imports: [CommonModule, AppRoutingModule, ReactiveFormsModule, PagesModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [
+    ShowSendMailComponent,
+    FooterComponent,
+    FooterComponent,
+    ProfileComponent,
+    KayitliDerslerComponent,
+    CommonModule,
+    FormsModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -10,6 +10,9 @@ import { IBolum } from 'src/app/entities/bolum.model';
 import { Ders, IDers } from 'src/app/entities/ders.model';
 import { IMufredat } from 'src/app/entities/mufredat.model';
 
+import { OrderPipe } from 'ngx-order-pipe';
+
+
 @Component({
   selector: 'app-ders-detail',
   templateUrl: './ders-detail.component.html',
@@ -26,14 +29,21 @@ export class DersDetailComponent implements OnInit {
 
   public bolumler$: Subject<IBolum[]>;
 
+  order:string = "bolum.sira";
+  sortedCollection: any[];
+
   constructor(
     private route: ActivatedRoute,
     private dersService: DersService,
     private mufredatService: MufredatService,
-    private authService:AuthService,
-    private kayitService:KayitService,
-    private alertService:NotificationService
-  ) {}
+    private authService: AuthService,
+    private kayitService: KayitService,
+    private alertService: NotificationService,
+    private orderPipe: OrderPipe
+  ) { 
+
+    
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -68,8 +78,9 @@ export class DersDetailComponent implements OnInit {
   getDers(id: number) {
     this.dersService.getById(id).subscribe(
       (res) => {
-        (this.ders = res), console.log(this.ders);
+        this.ders = res
         this.getMufredat();
+        
       },
       (err) => console.log('hata')
     );
@@ -79,25 +90,15 @@ export class DersDetailComponent implements OnInit {
     return `background-image: url(${img});`;
   }
 
-  getUpdateBolum() {
-    this.bolumler$.subscribe();
+  dersDuzenle(){
+    this.sortedCollection = this.orderPipe.transform(this.mufredat.bolumlers, 'sira');
   }
 
   getMufredat() {
     this.mufredatService.getById(this.ders.dersMufredat.id).subscribe((res) => {
-      // this.$bolumler = of(res.bolumlers);
       this.mufredat = res;
-      this.bolumler$.next(res.bolumlers);
-      //res.bolumlers.forEach(b=> this.bolumler$.next(b))
-      // this.bolumler$.next()
+      this.dersDuzenle()
     });
-    // this.mufredatService.getById(this.ders.dersMufredat.id).subscribe(res=>{
-    //   this.mufredat = res;
-    //   this.bolumler = res.bolumlers;
-    //   this.$bolumler = res;
-    // },err=>{
-    //   console.log("hata mufredat service");
 
-    // })
   }
 }
