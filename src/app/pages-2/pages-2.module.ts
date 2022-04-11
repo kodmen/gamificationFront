@@ -8,12 +8,14 @@ import { TestDetayComponent } from './test-detay/test-detay.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BasariSiralamaComponent } from './basari-siralama/basari-siralama.component';
 
 
 @NgModule({
   declarations: [
     BolumTestlerComponent,
-    TestDetayComponent
+    TestDetayComponent,
+    BasariSiralamaComponent,
   ],
   imports: [
     CommonModule,

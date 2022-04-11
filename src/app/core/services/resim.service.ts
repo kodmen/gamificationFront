@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DataUtilService } from './data-util.service';
 
@@ -6,7 +7,7 @@ import { DataUtilService } from './data-util.service';
 })
 export class ResimService {
 
-  constructor(private dataUtils:DataUtilService) { }
+  constructor(private dataUtils:DataUtilService,private http:HttpClient) { }
 
   getUrlImage(img:string){
     return `background-image: url(${img});`;
@@ -24,4 +25,17 @@ export class ResimService {
   openFile(base64String: string, contentType: string | null | undefined): void {
     this.dataUtils.openFile(base64String, contentType);
   }
+
+  getProfilePhoto(src:string):string{
+    if(src != null){
+      return `http://localhost:8080/api/image?name=${src}`
+    }
+    return "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+  }
+
+  public onError():string{
+    return "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+
+  }
+
 }

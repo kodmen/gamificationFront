@@ -1,15 +1,23 @@
-<h1>kayitli dersler</h1>
-
-<!-- <ng-container *ngFor="let ders of dersler">
-    <app-tek-ders  ></app-tek-ders>
-    
-</ng-container> -->
-
-
 <div class="container">
-    <h1 class="display-1  text-center text-uppercase">Dersler</h1>
+    <h1 class="display-1  text-center text-uppercase">kayitli dersler</h1>
 
     <div class="row pt-5 m-auto">
+        <ng-container *ngIf="dersler.length == 0">
+            <div class="col-4 mx-auto">
+                <div class="card text-center  bg-danger">
+               
+                <div class="card-body">
+                    <h5 class="card-title">Kayitli ders bulunamadi</h5>
+                    <p class="card-text">Lütfen bir derse kayıt olun</p>
+                    <a href="#" class="btn btn-primary">Derslere git</a>
+                </div>
+                
+            </div>
+            </div>
+            
+        </ng-container>
+
+
         <ng-container *ngFor="let ders of dersler ">
 
             <div class="col-md-6 col-lg-4 pb-3">
@@ -17,7 +25,8 @@
                 <div class="card card-custom bg-white border-white border-0">
                     <ng-container *ngIf="ders.aitOldDers.resim">
                         <div class="card-custom-img"
-                            [style]="resimService.getUrlImage('data:' + ders.aitOldDers.resimContentType + ';base64,' + ders.aitOldDers.resim)"></div>
+                            [style]="resimService.getUrlImage('data:' + ders.aitOldDers.resimContentType + ';base64,' + ders.aitOldDers.resim)">
+                        </div>
 
                     </ng-container>
 

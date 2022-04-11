@@ -24,4 +24,9 @@ export class OgrenciService {
     return this.http.patch<IOgrenci>(this.urlService.getUrl("/ogrencis/"+ogrenci.id), ogrenci, { observe: 'response' });
   }
 
+  getListTop10Ogr():Observable<Ogrenci[]>{
+    return this.http.get<Ogrenci[]>(this.urlService.getUrl("/ogrenci/listele"));
+  
+  }
+
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { BlogComponent } from './blog/blog.component';
 import { DerslerComponent } from './dersler/dersler.component';
+import { BasariSiralamaComponent } from './pages-2/basari-siralama/basari-siralama.component';
 import { BlogDetayComponent } from './pages/blog-detay/blog-detay.component';
 import { BolumDetayComponent } from './pages/bolum-detay/bolum-detay.component';
 import { DersAnalizComponent } from './pages/ders-analiz/ders-analiz.component';
@@ -39,6 +40,8 @@ export const routes: Routes = [
   { path: 'blog/:id', component: BlogDetayComponent },
   { path: 'hakkimizda', component: HakkimizdaComponent },
   { path: 'iletisim', component: IletisimComponent },
+  { path: 'siralama', component: BasariSiralamaComponent },
+
   { // lazy load the blog component
     path: 'testler',
     loadChildren: () =>
