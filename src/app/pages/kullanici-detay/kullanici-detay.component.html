@@ -11,7 +11,8 @@
                     <div class="card">
                         <div class="p-4">
                             <div class="d-flex flex-row">
-                                <div class=""><img [src]="urlService.getUrl('/image?name=')+ogrenci.studentUser.imageUrl" alt="user"
+                                
+                                <div class=""><img [src]="getOgrImage()" alt="user"
                                         class="rounded-circle" width="100" /></div>
                                 <div class="pl-4">
                                     <h3 class="text-uppercase">{{ogrenci.studentUser.firstName}} {{ogrenci.studentUser.lastName}}</h3>

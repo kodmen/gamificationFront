@@ -8,11 +8,13 @@
                 <form name="editForm" role="form" novalidate [formGroup]="editForm" (ngSubmit)="save()">
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <ng-container *ngIf="ogrenci">
+                        <!-- <ng-container *ngIf="this.ogrenci.studentUser.imageUrl != null"> -->
                             <img class="img-account-profile rounded-circle mb-2"
-                                [src]="'http://localhost:8080/api/image?name=' + this.ogrenci.studentUser.imageUrl"
+                                [src]="getOgrImage()"
                                 alt="">
-                        </ng-container>
+
+                        <!-- </ng-container> -->
+
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                         <div class="form-group">

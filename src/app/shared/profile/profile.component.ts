@@ -131,7 +131,17 @@ export class ProfileComponent implements OnInit {
   getUser() {
     this.authService.getUserProfile().subscribe((res) => {
       this.user = res;
+      console.log(res);
+      
     });
+  }
+
+  getOgrImage(){
+    if(this.ogrenci.studentUser.imageUrl === null){
+      return "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+    }else{
+      return `http://localhost:8080/api/image?name=${this.ogrenci.studentUser.imageUrl}`
+    }
   }
 
   //+++++++++++++++++
