@@ -9,7 +9,7 @@
 
         <h1 class="text-center">{{kayit.aitOldDers.isim}}</h1>
 
-            <ng-container *ngFor="let analiz of this.AllDersAnaliz; index as analizIndex;">
+            <ng-container *ngFor="let analiz of this.sortedCollection; index as analizIndex;">
                 <div class="col-md-5 border border-info bg-info m-5 p-3">
 
                     <h1>{{analiz.aitOldBolum.bolumBaslik}}

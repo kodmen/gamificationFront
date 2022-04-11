@@ -90,8 +90,38 @@ export class DersDetailComponent implements OnInit {
     return `background-image: url(${img});`;
   }
 
+
+  /**
+   *[
+  
+    {
+        "id": 1002,
+        "bolumBaslik": "Sayı Basamakları",
+        "dokuman": "Bir doğal sayıda rakamların her birinin bulunduğu yere basamak denir. Rakamların bulunduğu basamağa göre aldığı değere basamak değeri denir. Rakamların gösterdiği değere ise o rakamın sayı değeri denir. Sayılar basamak sayılarına göre isimlendirilir.",
+        "puan": 15,
+        "videoLink": "https://www.youtube.com/watch?v=TmrlARl29hE",
+        "sure": "40",
+        "sira": 2
+    },
+    {
+        "id": 1003,
+        "bolumBaslik": "Bölme ve Bölünebilme",
+        "dokuman": "\nBÖLME:\n\nA, B, C, K birer doğal sayı ve B 0 olmak üzere,\n\nbölme işleminde,\n• A ya bölünen, B ye bölen, C ye bölüm, K ya kalan denir.\n• A = B . C + K dır.\n• Kalan, bölenden küçüktür. (K <>\n• Kalan, bölümden (C den) küçük ise, bölen (B) ile bölümün (C) yeri değiştirilebilir.\n• K = 0 ise, A sayısı B ile tam bölünebiliyor denir.",
+        "puan": 20,
+        "videoLink": "https://www.youtube.com/watch?v=d4X0zCeaRi8",
+        "sure": "60",
+        "sira": 3
+    }
+]
+   */
   dersDuzenle(){
     this.sortedCollection = this.orderPipe.transform(this.mufredat.bolumlers, 'sira');
+    console.log("ders duzenle içi");
+    console.log(this.mufredat.bolumlers);
+    console.log(this.sortedCollection);
+    
+    
+    
   }
 
   getMufredat() {
