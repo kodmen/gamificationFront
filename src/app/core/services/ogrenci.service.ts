@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { IOgrenci, Ogrenci } from 'src/app/entities/ogrenci.model';
 import { IUser, User } from 'src/app/entities/user-management';
+import { TopUserListDto } from '../models/topUserList';
 import { EntityResponseType } from './ders.service';
 import { UrlService } from './url.service';
 
@@ -24,8 +25,8 @@ export class OgrenciService {
     return this.http.patch<IOgrenci>(this.urlService.getUrl("/ogrencis/"+ogrenci.id), ogrenci, { observe: 'response' });
   }
 
-  getListTop10Ogr():Observable<Ogrenci[]>{
-    return this.http.get<Ogrenci[]>(this.urlService.getUrl("/ogrenci/listele"));
+  getListTop10Ogr():Observable<TopUserListDto[]>{
+    return this.http.get<TopUserListDto[]>(this.urlService.getUrl("/ogrenci/listele"));
   
   }
 

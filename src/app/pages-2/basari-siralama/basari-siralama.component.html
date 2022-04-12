@@ -25,10 +25,10 @@
                     <ng-container *ngFor="let ogr of top10Ogr; index as i">
                         <tr>
                             <td>{{1+i}}</td>
-                            <td><a href="#"><img [src]="resimService.getProfilePhoto(ogr.studentUser.imageUrl)"
+                            <td><a href="#"><img [src]="resimService.getProfilePhoto(ogr.imageUrl)"
                                         onerror="this.src='https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'"
-                                        class="avatar" alt="Avatar">{{ogr.studentUser.login}}</a></td>
-                            <td>{{ogr.toplamPuan}}</td>
+                                        class="avatar" alt="Avatar">{{ogr.login}}</a></td>
+                            <td>{{ogr.puan}}</td>
                             <td>{{ogr.level}}</td>
                            
                         </tr>
