@@ -4,6 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { BlogComponent } from './blog/blog.component';
 import { DerslerComponent } from './dersler/dersler.component';
 import { BasariSiralamaComponent } from './pages-2/basari-siralama/basari-siralama.component';
+import { DuelloComponent } from './pages-2/duello/duello.component';
 import { BlogDetayComponent } from './pages/blog-detay/blog-detay.component';
 import { BolumDetayComponent } from './pages/bolum-detay/bolum-detay.component';
 import { DersAnalizComponent } from './pages/ders-analiz/ders-analiz.component';
@@ -47,6 +48,7 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages-2/pages-2.module').then((m) => m.Pages2Module),canActivate: [AuthGuard]
   },
+  { path: 'duello', component: DuelloComponent , canActivate: [AuthGuard]},
   { path: 'profil-ayarlar', component: ProfileComponent , canActivate: [AuthGuard]},
   { path: 'profil', component: KullaniciDetayComponent , canActivate: [AuthGuard]},
   { path: 'kayitli-dersler', component: KayitliDerslerComponent , canActivate: [AuthGuard]},

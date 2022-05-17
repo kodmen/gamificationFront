@@ -1,4 +1,3 @@
-
 <div class="jumbotron">
     <div class="container text-center text-lg-left">
         <div class="row">
@@ -20,24 +19,51 @@
     </div>
 </div>
 
- <div class="container mt-4">
+<div class="container mt-4">
 
     <div class="container mb-5">
         <div class="row">
-          <div class="col-12 col-md-6">
-            <h6 class="text-muted"><h1>{{mufredat.mufredatBaslik}}</h1></h6> 
-            <ul class="list-group list-group-flush">
-                <ng-container *ngFor="let bolum of sortedCollection; index as i ">
-                <li  [routerLink]="['../../ders-detay/konu',bolum.id]"  class="list-group-item"><h3>{{i+1}} - {{bolum.bolumBaslik}}</h3></li>
-                
-              </ng-container>
-            </ul>
-          </div>
+
+            <h6 class="text-muted">
+                <h1>{{mufredat.mufredatBaslik}}</h1>
+            </h6>
+            <ng-container *ngFor="let bolum of sortedCollection; index as i ">
+
+                <div class="col-6 col-md-3">
+                    <div class="card ">
+                        <!-- <h5 class="card-header"></h5> -->
+                        <div class="card-body">
+                            <h5>{{i+1}} - {{bolum.bolumBaslik}}</h5>
+                            <table class="table  table-bordered ">
+
+                                <tbody>
+                                    <tr>
+                                        <th>puan</th>
+                                        <td>{{bolum.puan}}</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <th>zaman</th>
+                                        <td>{{bolum.sure}}dk</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a [routerLink]="['../../ders-detay/konu',bolum.id]" class="btn btn-primary">bolume git</a>
+                        </div>
+                    </div>
+
+                    <!-- <li  [routerLink]="['../../ders-detay/konu',bolum.id]"  class="list-group-item"><h3>{{i+1}} - {{bolum.bolumBaslik}}</h3></li> -->
+                </div>
+            </ng-container>
+
+
         </div>
-      </div>
-</div> 
+    </div>
+</div>
 
 <div class="container">
 
-<app-form-message [comments]="ders.dersForm"></app-form-message>
+    <app-form-message [comments]="ders.dersForm"></app-form-message>
 </div>

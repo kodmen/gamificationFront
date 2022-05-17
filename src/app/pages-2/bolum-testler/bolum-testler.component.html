@@ -5,6 +5,20 @@
             <app-loading></app-loading>
         </ng-container>
         <ng-container *ngIf="!isLoading">
+            <ng-container *ngIf="sorular.length == 0">
+                <div class="col-4 mx-auto">
+                    <div class="card text-center  bg-danger">
+                   
+                    <div class="card-body">
+                        <h5 class="card-title"> derse ait test bulunamadi</h5>
+                        <p class="card-text"></p>
+                       
+                    </div>
+                    
+                </div>
+                </div>
+                
+            </ng-container>
             <ng-container *ngFor="let t of sorular">
                 <ng-container *ngIf="testAnaliziVarMi(t.id)">
 
@@ -77,6 +91,7 @@
 
 
             </ng-container>
+
         </ng-container>
 
     </div>

@@ -9,6 +9,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BasariSiralamaComponent } from './basari-siralama/basari-siralama.component';
+import { DuelloComponent } from './duello/duello.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { BasariSiralamaComponent } from './basari-siralama/basari-siralama.compo
     BolumTestlerComponent,
     TestDetayComponent,
     BasariSiralamaComponent,
+    DuelloComponent,
   ],
   imports: [
     CommonModule,
