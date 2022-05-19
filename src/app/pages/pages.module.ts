@@ -14,6 +14,7 @@ import { KullaniciDetayComponent } from './kullanici-detay/kullanici-detay.compo
 import { FormsModule } from '@angular/forms';
 import { DersAnalizComponent } from './ders-analiz/ders-analiz.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { Components2Module } from '../components-2/components-2.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { OrderModule } from 'ngx-order-pipe';
     KullaniciDetayComponent,
     DersAnalizComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule, YouTubePlayerModule],
+  imports: [CommonModule, PagesRoutingModule, YouTubePlayerModule, Components2Module],
   exports: [
     DersDetailComponent,
     BolumDetayComponent,

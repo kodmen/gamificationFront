@@ -4,44 +4,48 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-    <div class="container ">
+    <div class="container">
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
-                    <div class="card ">
+                    <div class="card">
                         <div class="p-4">
                             <div class="d-flex flex-row">
-
-                                <div class=""><img [src]="getOgrImage()" alt="user" class="rounded-circle"
-                                        width="100" /></div>
+                                <div class="">
+                                    <img [src]="getOgrImage()" alt="user" class="rounded-circle" width="100" />
+                                </div>
                                 <div class="pl-4">
-                                    <h3 class="text-uppercase font-monospace">{{ogrenci.studentUser.firstName}}
-                                        {{ogrenci.studentUser.lastName}}</h3>
-                                    <h4 class="font-monospace">@{{ogrenci.studentUser.login}}</h4>
+                                    <h1 class="text-uppercase font-monospace">
+                                        {{ ogrenci.studentUser.firstName }}
+                                        {{ ogrenci.studentUser.lastName }}
+                                    </h1>
+                                    <h4 class="font-monospace">
+                                        @{{ ogrenci.studentUser.login }}
+                                    </h4>
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col border-right text-center">
-                                    <h2 class="font-light">{{ogrenci.level}}</h2>
-                                    <h4 class="text-uppercase font-monospace">Level</h4>
+                                    <h2 class="font-light">{{ ogrenci.level }}</h2>
+                                    <h2 class="text-uppercase font-monospace">Level</h2>
                                 </div>
-                                <div class="col  text-center">
-                                    <h2 class="font-light">{{ogrenci.toplamPuan}}</h2>
-                                    <h4 class="text-uppercase font-monospace">Puan</h4>
+                                <div class="col text-center">
+                                    <h2 class="font-light">{{ ogrenci.toplamPuan }}</h2>
+                                    <h2 class="text-uppercase font-monospace">Puan</h2>
                                 </div>
-
                             </div>
                         </div>
                         <div class="card-body border-top">
                             <p class="text-center aboutscroll">
-                                {{ogrenci.aciklama}}
+                                {{ ogrenci.aciklama }}
                             </p>
                         </div>
                     </div>
 
                     <div class="row mt-5">
-
-                        <h4 class="text-center text-uppercase font-monospace">Haftalık soru hedefleri</h4>
+                        <h2 class="text-center text-uppercase font-monospace">
+                            Haftalık soru hedefleri
+                        </h2>
                         <!-- <ol class="list-group list-group-numbered">
                                     <li class="list-group-item">matematik 50 soru</li>
                                     <li class="list-group-item">fizik 75 soru</li>
@@ -63,20 +67,21 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
                 <div class="col-md-1"></div>
-                <div class="col-md-6 ">
+                <div class="col-md-7">
+                    <h1 class="text-center font-monospace">ROZETLERİM</h1>
+                    <div class=" d-flex flex-wrap">
+                       
+   
+                            <ng-container *ngFor="let r of rozetArray;index as i">
 
 
-                    <h3 class="text-center font-monospace">ROZETLERİM</h3>
-                    <img src="https://flat-icons.com/wp-content/uploads/edd/2017/11/gsmify-icons.jpg"
-                        class="img-thumbnail" alt="">
-
-
-
-
-
+                                <app-rozet  class="m-3" [Resim]="r.resim" [aciklama]="r.aciklama" [baslik]="r.baslik">
+                                </app-rozet>
+                            </ng-container>
+                        
+                    </div>
                 </div>
                 <!-- <div class="col-md-8">
                     <div class="row gutters-sm">
@@ -117,9 +122,7 @@
                        
                     </div>
                 </div> -->
-
             </div>
-
         </div>
     </div>
 </ng-container>
