@@ -15,7 +15,7 @@ export class BasariSiralamaComponent implements OnInit {
     public resimService: ResimService
   ) {}
 
-  top10Ogr?: TopUserListDto[];
+  top10Ogr?: Ogrenci[];
 
   ngOnInit(): void {
     this.getOgr();

@@ -1,25 +1,139 @@
+<app-healty-bar></app-healty-bar>
+
 <div class="container">
     <!-- <p class="fs-1 text-uppercase">soru duellosu</p> -->
     <div class="container">
+
         <div class="row">
             <div class="col-md-6">
+                  
                 <div class="row oyunPlatform">
-                    <div class="col-md-4">
-                        <!-- <img src="https://www.fightersgeneration.com/np8/char/ryu-sf4gif.gif" alt=""> -->
-                        <img src="https://www.fightersgeneration.com/characters3/ryu-cvs-hadoken-a.gif" width="400" alt="">
 
-                    </div>
-                    <div class="col-md-4">
-                        <!-- <img src="https://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-7.gif" width="400px" alt=""> -->
-                    </div>
-                    <div class="col-md-4">
-                        <img src="https://www.fightersgeneration.com/np8/char/ryu-sf4gif.gif"
-                            style="-webkit-transform: scaleX(-1); transform: scaleX(-1);" alt="">
-                    </div>
+                    <ng-container *ngIf="bekleDurum">
+                        <div class="col-md-4">
+                            <img src="https://www.fightersgeneration.com/np5/char/ssf2hd/akuma-hdstance.gif" width="200" alt="">
+                            <!-- <img src="https://www.fightersgeneration.com/characters3/ryu-cvs-hadoken-a.gif" width="400" alt=""> -->
+    
+                        </div>
+                        <div class="col-md-3">
+                            <!-- <img src="https://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-7.gif" width="400px" alt=""> -->
+                        </div>
+                        <div class="col-md-4">
+                            <img src="https://www.fightersgeneration.com/np8/char/ryu-sf4gif.gif"
+                                style="-webkit-transform: scaleX(-1); transform: scaleX(-1);" width="250" alt="">
+                        </div>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="dayakAtDurum">
+                        <div class="col-md-4">
+                            <img src="https://www.fightersgeneration.com/characters/akuma-fireburn.gif" width="400" alt="">
+    
+                        </div>
+                        <div class="col-md-2">
+                            <!-- <img src="https://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-7.gif" width="400px" alt=""> -->
+                        </div>
+                        <div class="col-md-4"><!-- dayak yemek-->
+                            <img src="https://www.fightersgeneration.com/characters3/ryu-slam.gif"
+                                style="-webkit-transform: scaleX(-1); transform: scaleX(-1);" width="400" alt="">
+                        </div>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="dayakYeDurum">
+                        <div class="col-md-4">
+                            <img src="https://www.fightersgeneration.com/characters3/ryu-stand-hit.gif" width="400" alt="">
+                            <!-- <img src="https://www.fightersgeneration.com/characters3/ryu-cvs-hadoken-a.gif" width="400" alt=""> -->
+    
+                        </div>
+                        <div class="col-md-2">
+                            <!-- <img src="https://twistedsifter.com/wp-content/uploads/2013/05/animated-gifs-of-fighting-game-backgrounds-7.gif" width="400px" alt=""> -->
+                        </div>
+                        <div class="col-md-4">
+                            <img src="https://www.fightersgeneration.com/characters3/ryu-hp.gif"
+                                style="-webkit-transform: scaleX(-1); transform: scaleX(-1);" width="400" alt="">
+                        </div>
+                    </ng-container>
+                 
                 </div>
             </div>
-            <div class="col-md-6">
-                <app-test-quiz></app-test-quiz>
+            <div class="col-md-6" [class]="getSoruClass()" >
+                <div class="container ">
+                    <div id="intro">
+                        <div class="counter">
+                            <p class="prefix">Question:</p>
+                            <h1 id="counter">{{count+1}}/{{object.length}}</h1>
+                        </div>
+                        <div *ngIf="tekCevap" class="text-center">
+                            <p>{{tekCevapYazi}}</p>
+                        </div>
+                        <div class="score">
+                            <p class="prefix">Score:</p>
+                            <h1 id="score">{{score}}</h1>
+                        </div>
+                    </div>
+                
+                
+                    <ng-container *ngFor="let item of object ;index as i">
+                        <ng-container *ngIf="i == count">
+                            <div class="question-holder row">
+                                <div class="col-12">
+                                    <h4 id="question">{{item.soruText}}</h4>
+                                </div>
+                            </div>
+                
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="answer-container card" (click)="cevap(item.cevaplar[0].id, item.soruId)">
+                                        <p class="answer-prefix">A</p>
+                                        <p class="answer-text" data-answer="a">{{item.cevaplar[0].cevapText}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="answer-container card" (click)="cevap(item.cevaplar[1].id, item.soruId)">
+                                        <p class="answer-prefix">B</p>
+                                        <p class="answer-text" data-answer="b">{{item.cevaplar[1].cevapText}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="answer-container card" (click)="cevap(item.cevaplar[2].id, item.soruId)">
+                                        <p class="answer-prefix">C</p>
+                                        <p class="answer-text" data-answer="c">{{item.cevaplar[2].cevapText}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="answer-container card" (click)="cevap(item.cevaplar[3].id, item.soruId)">
+                                        <p class="answer-prefix">D</p>
+                                        <p class="answer-text" data-answer="d">{{item.cevaplar[3].cevapText}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                
+                
+                    </ng-container>
+                    <div class="row">
+                       
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center pagination-lg">
+                              <li class="page-item ">
+                                <a class="page-link" (click)="prev()" [tabindex]="count">Geri</a>
+                              </li>
+                    
+                              <li class="page-item">
+                                <a class="page-link" (click)="next()">İleri</a>
+                              </li>
+                            </ul>
+                          </nav>
+                    </div>
+                
+                </div>
+
+                <!-- <app-test-quiz></app-test-quiz> -->
             </div>
         </div>
     </div>

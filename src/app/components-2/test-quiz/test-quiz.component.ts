@@ -46,6 +46,7 @@ export class TestQuizComponent implements OnInit {
       console.log('nex tıklandı', this.count);
     }
   }
+  
   prev() {
     if (this.count > 0) {
       this.count--;

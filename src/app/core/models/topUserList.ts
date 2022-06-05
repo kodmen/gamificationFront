@@ -1,6 +1,6 @@
 export class TopUserListDto {
       imageUrl:string
       login:string;
-      puan:number;
+      toplamPuan:number;
       level:number;
 }

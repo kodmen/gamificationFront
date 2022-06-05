@@ -1,0 +1,87 @@
+$red: #f42126;
+$yellow: #fff950;
+$blue: #054baa;
+$white: #ccc;
+$black: #333;
+$bar-height: 4vw;
+$max-bar-height: 5.125rem;
+$font-size: 4.5vw;
+$wide-font-size: 150px; 
+$border-color: rgba(123, 123, 123, 100);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'VT323';
+  padding: 2rem;
+  background-color: #ccc;
+}
+
+.l-split__item {
+  float: left;
+  width: 46%;
+}
+
+.l-split__item--small {
+  width: 8%;
+}
+
+.l-centered {
+  margin: 0 auto;
+}
+
+.health-container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.healthbar {
+  background-color: $red;
+  border-radius: 5px;
+  box-shadow: 
+    0 0 0 1px hsl(0, 0%, 80%),
+    0 0 0 2px hsl(0, 0%, 90%),
+    0 0 0 3px hsl(0, 0%, 100%);
+  height: $bar-height;
+  max-height: $max-bar-height;
+}
+
+.healthbar__meter {
+  background-color: $yellow;
+  border-radius: 5px;
+  height: $bar-height;
+  max-height: $max-bar-height;
+}
+
+.healthbar__meter--player-one {
+  float: right;
+}
+
+.healthbar__meter--player-two { 
+  float: left;
+}
+
+.timer,
+.ko {
+  color: $yellow;
+  display: inline-block;
+  font-weight: bold;
+  font-size: $font-size;
+  line-height: .5;
+  text-align: center;
+  text-shadow: .4vw .3vw 0 $red;
+  width: 100%;
+  
+  @media (min-width: 1920px) {
+    font-size: $wide-font-size;
+  }
+}
+
+.timer {
+  color: $white;
+  clear: both;
+  display: block;
+  padding-top: 1.4vw;
+}
