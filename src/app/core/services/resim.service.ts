@@ -28,7 +28,7 @@ export class ResimService {
 
   getProfilePhoto(src:string):string{
     if(src != null){
-      return `http://localhost:8080/api/image?name=${src}`
+      return `https://egitim-partneri-back.herokuapp.com/api/image?name=${src}`
     }
     return "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
   }

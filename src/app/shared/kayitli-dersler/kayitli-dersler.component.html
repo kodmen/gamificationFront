@@ -1,6 +1,9 @@
 <div class="container">
     <h1 class="display-1  text-center text-uppercase">kayitli dersler</h1>
-
+    <ng-container *ngIf="isLoading">
+        <h1>yükleniyor</h1>
+    </ng-container>
+    
     <div class="row pt-5 m-auto">
         <ng-container *ngIf="dersler.length == 0">
             <div class="col-4 mx-auto">

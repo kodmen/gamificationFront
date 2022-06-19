@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UrlService } from 'src/app/core/services/url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordResetFinishService {
 
-  endpoint: string = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private urlService:UrlService) {}
 
   save(key: string, newPassword: string): Observable<{}> {
-    return this.http.post(`${this.endpoint}/account/reset-password/finish`, { key, newPassword });
+    return this.http.post(this.urlService.getUrl("/account/reset-password/finish"), { key, newPassword });
   }
 }

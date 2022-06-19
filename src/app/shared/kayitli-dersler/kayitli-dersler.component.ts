@@ -13,17 +13,23 @@ export class KayitliDerslerComponent implements OnInit {
 
   constructor(private kayitService:KayitService,private alertService:NotificationService,public resimService:ResimService) { }
   dersler?:Kayit[];
-  
+  isLoading = false;
+
   ngOnInit(): void {
+    
+
     this.getKayit();    
   }
 
   getKayit(){
+    this.isLoading = true;
     this.kayitService.getAllKayitByOgrenci().subscribe(res=>{
       this.dersler=res;
+      this.isLoading = false;
       console.log(res);
       
     },err=>{
+      this.isLoading = false;
       this.alertService.showError(err.error.titel,"HATA");
     })
   }

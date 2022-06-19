@@ -19,7 +19,7 @@ import { PasswordChange } from '../entities/passwordChange.model';
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:8080/api';
+  endpoint: string = 'https://egitim-partneri-back.herokuapp.com/api';
 
   // endpoint: string = 'http://164.92.229.255:8080/api';
   headers = new HttpHeaders()

@@ -17,6 +17,7 @@ import {
 import { ImageModelService } from 'src/app/core/services/image-model.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { OgrenciService } from 'src/app/core/services/ogrenci.service';
+import { UrlService } from 'src/app/core/services/url.service';
 import { Account } from 'src/app/entities/account.model';
 import { IImageModel, ImageModel } from 'src/app/entities/image-model.model';
 import { Ogrenci } from 'src/app/entities/ogrenci.model';
@@ -38,7 +39,8 @@ export class ProfileComponent implements OnInit {
     protected dataUtils: DataUtilService,
     protected alertService: NotificationService,
     protected elementRef: ElementRef,
-    protected accountService: AccountService
+    protected accountService: AccountService,
+    protected urlService:UrlService
   ) {
     this.getOgrenci();
   }
@@ -140,7 +142,7 @@ export class ProfileComponent implements OnInit {
     if(this.ogrenci.studentUser.imageUrl === null){
       return "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
     }else{
-      return `http://localhost:8080/api/image?name=${this.ogrenci.studentUser.imageUrl}`
+      return this.urlService.getUrl(`/image?name=${this.ogrenci.studentUser.imageUrl}`);
     }
   }
 
