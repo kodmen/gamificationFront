@@ -28,6 +28,8 @@ export class AccountActiveComponent implements OnInit {
   }
   
   keyGonder(key: number):void{
+    console.log("hesap gönderiliyor");
+    
     this.authService.activeUser(key).subscribe({
       next: () => {this.success= true},
       error: () => { this.error = true}

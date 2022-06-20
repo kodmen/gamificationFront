@@ -14,30 +14,28 @@ import { RegisterUser } from '../core/models/registerUser';
 import { JhipsterUser } from '../core/models/jhipsteruser';
 import { IUser } from '../entities/user-management';
 import { PasswordChange } from '../entities/passwordChange.model';
+import { UrlService } from '../core/services/url.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'https://egitim-partneri-back.herokuapp.com/api';
 
-  // endpoint: string = 'http://164.92.229.255:8080/api';
   headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
 
   private currentUser: CurrentUser;
 
-  constructor(private http: HttpClient, public router: Router) {}
+  constructor(private http: HttpClient, public router: Router, private urlService:UrlService) {}
 
   signUp(user: RegisterUser): Observable<{}> {
-    let api = `${this.endpoint}/register`;
-    return this.http.post(api, user).pipe(catchError(this.handleError));
+    return this.http.post(this.urlService.getUrl("/register"), user).pipe(catchError(this.handleError));
   }
 
   // Sign-in
   signIn(user: JhipsterUser) {
-    return this.http.post<any>(`${this.endpoint}/authenticate`, user);
+    return this.http.post<any>(this.urlService.getUrl("/authenticate"), user);
   }
 
   getToken() {
@@ -60,8 +58,7 @@ export class AuthService {
 
   // User profile
   getUserProfile(): Observable<IUser> {
-    let api = `${this.endpoint}/account`;
-    return this.http.get<any>(api, { headers: this.headers }).pipe(
+    return this.http.get<any>(this.urlService.getUrl("/account"), { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
       }),
@@ -71,12 +68,11 @@ export class AuthService {
 
   //active user
   activeUser(key: number): Observable<any> {
-    let api = `${this.endpoint}/activate`;
     let queryParams = new HttpParams();
     queryParams = queryParams.append('key', key);
 
     //return this.http.get<UserInformation>(url,{params:queryParams});
-    return this.http.get<any>(api, { params: queryParams }).pipe(
+    return this.http.get<any>(this.urlService.getUrl("/activate"), { params: queryParams }).pipe(
       map((res: Response) => {
         return res || {};
       }),
@@ -98,6 +94,6 @@ export class AuthService {
   }
 
   changePassword(passChange:PasswordChange):Observable<any>{
-    return this.http.post(this.endpoint+"/account/change-password",passChange);
+    return this.http.post(this.urlService.getUrl("/account/change-password"),passChange);
   }
 }
