@@ -7,8 +7,8 @@ export class UrlService {
 
   constructor() { }
 
-  // private endpoint: string = 'https://egitim-partneri-back.herokuapp.com/api';
-  private endpoint: string = 'http://localhost:8080/api';
+  private endpoint: string = 'https://egitim-partneri-back.herokuapp.com/api';
+  // private endpoint: string = 'http://localhost:8080/api';
 
   
   getUrl(url:string):string{
