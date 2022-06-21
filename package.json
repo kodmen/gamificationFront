@@ -6,8 +6,9 @@
     "build": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build --base-href ./",
-    "start" : "node server.js"
+    "heroku-postbuild": "ng build --aot --prod",
+    "start" : "node server.js",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
