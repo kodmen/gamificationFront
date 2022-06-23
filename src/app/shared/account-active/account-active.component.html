@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="d-flex justify-content-center">
 
         <ng-container *ngIf="success">
@@ -31,4 +31,38 @@
         
         </ng-container>
     </div>
-</div>
+</div> -->
+<ng-container *ngIf="success">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="card">
+            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+                <i class="checkmark">✓</i>
+            </div>
+            <h1 class="succes">Success</h1>
+            <p>Hesabın aktif oldu;<br /> </p>
+        </div>
+        </body>
+
+    </ng-container>
+    
+    <ng-container *ngIf="error">
+    
+        <head>
+            <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+        </head>
+    
+        <body>
+            <div class="card">
+                <div style="border-radius:200px; height:200px; width:200px; background: #f8d2b8; margin:0 auto;">
+                    <i class="checkmark">❌</i>
+                </div>
+                <h1 class="error">error</h1>
+                <p> Bir hata oluştu <br />Hesabınız aktif olmadı </p>
+            </div>
+        </body>
+    
+    </ng-container> 

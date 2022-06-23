@@ -60,66 +60,64 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    if (this.form.invalid) {
-      if (this.f.email.errors.email)
-        this.notifcation.showError(
-          'maili yanlış formatta girdiniz',
-          ' Try Again '
-        );
-      if (this.f.email.errors.required)
-        this.notifcation.showError('mail is required', ' Try Again ');
+    if (this.form.status == "INVALID") {
 
-      if (this.f.username.errors.required)
-        this.notifcation.showError('Username is required', ' Try Again ');
-      if (this.f.username.errors.minlength)
-        this.notifcation.showError(
-          'Username must be at least 6 characters',
-          ' Try Again '
-        );
-      if (this.f.username.errors.maxlength)
-        this.notifcation.showError(
-          'Username must not exceed 40 characters',
-          ' Try Again '
-        );
+      if(this.f.email.status=="INVALID"){
+        if (this.f.email.errors.required){
+          this.notifcation.showError('mail girmek zorunlu', 'Tekrar deneyin');
+        }
+        if (this.f.email.errors.email){
+          this.notifcation.showError('mail formatı yanlış', 'Tekrar deneyin');
+        }
 
-      if (this.f.password.errors.required)
-        this.notifcation.showError('Password is required', ' Try Again ');
-      if (this.f.password.errors.minlength)
-        this.notifcation.showError(
-          ' Password must be at least 6 characters',
-          ' Try Again '
-        );
-      if (this.f.password.errors.maxlength)
-        this.notifcation.showError(
-          'Password must not exceed 40 characters',
-          ' Try Again '
-        );
+      }
+
+      if(this.f.username.status=="INVALID"){
+        if (this.f.username.errors.required){
+          this.notifcation.showError('kullanıcı adı girmek zorunlu', 'Tekrar deneyin');
+        }
+        if (this.f.username.errors.minlength){
+          this.notifcation.showError('kullanıcı adı 6 ten az olamaz', 'Tekrar deneyin');
+        }
+        if (this.f.username.errors.maxlength){
+          this.notifcation.showError('kullanıcı adı 20 ten fazla olamaz', 'Tekrar deneyin');
+        }
+      }
+
+      if(this.f.password.status=="INVALID"){
+        if (this.f.password.errors.required){
+          this.notifcation.showError('Şifre girmek zorunlu', 'Tekrar deneyin');
+        }
+        if (this.f.password.errors.minlength){
+          this.notifcation.showError('şifre karakter sayısı 6 ten az olamaz', 'Tekrar deneyin');
+        }
+        if (this.f.password.errors.maxlength){
+          this.notifcation.showError('şifre karakter sayısı 40 ten fazla olamaz', 'Tekrar deneyin');
+        }
+      }
 
       return;
     } else {
-      console.log(JSON.stringify(this.form.value, null, 2));
       let userModel = Object.assign({}, this.form.value);
-      const login = userModel.username;
-      const email = userModel.email;
-      const password = userModel.password;
+      const login = userModel.username.trim();
+      const email = userModel.email.trim();
+      const password = userModel.password.trim();
       const langKey = 'en';
 
       this.authService.signUp({ login, email, password, langKey }).subscribe(
         (res) => {
-          //this.form.reset();
 
           this.router.navigate(['/sendMail']);
         },
         (err) => {
-          console.log('error hata');
-          console.log(err);
-          // burda errora göre hata fırlat
+          console.log(err)
           this.notifcation.showError(
             'Hata oluştu',
             ' Try Again '
           );
         }
       );
+
     }
   }
 }

@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   signinForm: FormGroup;
   hata = false;
   submitted = false;
-// utf türkçe karakter hasası olabilir
+
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -53,53 +53,67 @@ export class SigninComponent implements OnInit {
 
   loginUser() {
     this.submitted = true;
-    if (this.signinForm.invalid) {
-      if (this.f.username.errors.required)
-        this.notifcation.showError('Username is required', ' Try Again ');
-      if (this.f.username.errors.minlength)
-        this.notifcation.showError(
-          'Username must be at least 6 characters',
-          ' Try Again '
-        );
-      if (this.f.username.errors.maxlength)
-        this.notifcation.showError(
-          'Username must not exceed 40 characters',
-          ' Try Again '
-        );
 
-      if (this.f.password.errors.required)
-        this.notifcation.showError('Password is required', ' Try Again ');
-      if (this.f.password.errors.minlength)
-        this.notifcation.showError(
-          ' Password must be at least 6 characters',
-          ' Try Again '
-        );
-      if (this.f.password.errors.maxlength)
-        this.notifcation.showError(
-          'Password must not exceed 40 characters',
-          ' Try Again '
-        );
+    if (this.signinForm.status == 'INVALID') {
+      if (this.f.username.status == 'INVALID') {
+        if (this.f.username.errors.required) {
+          this.notifcation.showError(
+            'kullanıcı adı girmek zorunlu',
+            'Tekrar deneyin'
+          );
+        }
+        if (this.f.username.errors.minlength) {
+          this.notifcation.showError(
+            'kullanıcı adı 6 ten az olamaz',
+            'Tekrar deneyin'
+          );
+        }
+        if (this.f.username.errors.maxlength) {
+          this.notifcation.showError(
+            'kullanıcı adı 20 ten fazla olamaz',
+            'Tekrar deneyin'
+          );
+        }
+      }
 
-      return;
+      if (this.f.password.status == 'INVALID') {
+        if (this.f.password.errors.required) {
+          this.notifcation.showError('Şifre girmek zorunlu', 'Tekrar deneyin');
+        }
+        if (this.f.password.errors.minlength) {
+          this.notifcation.showError(
+            'şifre karakter sayısı 6 ten az olamaz',
+            'Tekrar deneyin'
+          );
+        }
+        if (this.f.password.errors.maxlength) {
+          this.notifcation.showError(
+            'şifre karakter sayısı 40 ten fazla olamaz',
+            'Tekrar deneyin'
+          );
+        }
+      }
+    } else {
+      const user = {
+        username: this.signinForm.value.username.trim(),
+        password: this.signinForm.value.password.trim(),
+      };
+      this.authService.signIn(user).subscribe(
+        (res) => {
+          localStorage.setItem('access_token', res.id_token);
+          this.router.navigate(['profil']);
+        },
+        (err) => {
+          this.notifcation.showError(
+            'Yanlış kullanıcı adı yada şifre girdiniz',
+            'Tekrar deneyin'
+          );
+          this.hata = true;
+        }
+      );
     }
 
-    this.authService.signIn(this.signinForm.value).subscribe(
-      (res) => {
-        localStorage.setItem('access_token', res.id_token);
-        this.router.navigate(['profil']);
-        //this.notifcation.showSuccess("tebrikler")
-      },
-      (err) => {
-        this.notifcation.showError(
-          'Yanlış kullanıcı adı yada şifre girdiniz',
-          'Tekrar deneyin'
-        );
-        this.hata = true;
-      }
-    );
+
   }
 
-  // goToSignIn(){
-  //   this.router.navigate(['sign-up']);
-  // }
 }

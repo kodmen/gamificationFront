@@ -11,9 +11,10 @@ export class MyInitService {
   }
 
   initCheck(){
-    if(this.authService.isLoggedIn){
-      //this.authService.doLogout();
-      // burda her istekten sonra kullanıcı jwt token süresi kontrol edilebilir
+    if(localStorage.getItem("access_token") === null){
+      this.authService.doLogout();
     }
+    
+
   }
 }

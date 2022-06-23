@@ -20,22 +20,27 @@ import { UrlService } from '../core/services/url.service';
   providedIn: 'root',
 })
 export class AuthService {
-
   headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
 
   private currentUser: CurrentUser;
 
-  constructor(private http: HttpClient, public router: Router, private urlService:UrlService) {}
+  constructor(
+    private http: HttpClient,
+    public router: Router,
+    private urlService: UrlService
+  ) {}
 
   signUp(user: RegisterUser): Observable<{}> {
-    return this.http.post(this.urlService.getUrl("/register"), user).pipe(catchError(this.handleError));
+    return this.http
+      .post(this.urlService.getUrl('/register'), user)
+      .pipe(catchError(this.handleError));
   }
 
   // Sign-in
   signIn(user: JhipsterUser) {
-    return this.http.post<any>(this.urlService.getUrl("/authenticate"), user);
+    return this.http.post<any>(this.urlService.getUrl('/authenticate'), user);
   }
 
   getToken() {
@@ -43,10 +48,39 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-
     let authToken = localStorage.getItem('access_token');
-    
+
     return authToken !== null ? true : false;
+  }
+
+  private dahaOnceGirildiMi:boolean = false;
+
+  authenticate(): Observable<any> {
+    /**
+     * burda birkere içeri girsin
+     * istek atsın
+     * gelen sonucu kaç dk olduğuna göre sayaç başlasın
+     * sayacın içindeyse true dönsün sayacın dışındaysa falsa dönsün
+     *
+     */
+    // let basarili = true;
+
+    // // daha önce girildiyse bunu yap
+    // if(this.dahaOnceGirildiMi){
+
+    // }else{// daha önce girilmediyse bunu yap
+    //   this.http.get<any>(this.urlService.getUrl('/authenticate')).subscribe({
+    //         next: (res) => {
+    //           if (res !== null) {
+
+    //           }
+    //         },
+    //       });
+    // }
+
+    
+
+    return this.http.get<any>(this.urlService.getUrl('/authenticate'));
   }
 
   doLogout() {
@@ -58,12 +92,14 @@ export class AuthService {
 
   // User profile
   getUserProfile(): Observable<IUser> {
-    return this.http.get<any>(this.urlService.getUrl("/account"), { headers: this.headers }).pipe(
-      map((res: Response) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<any>(this.urlService.getUrl('/account'), { headers: this.headers })
+      .pipe(
+        map((res: Response) => {
+          return res || {};
+        }),
+        catchError(this.handleError)
+      );
   }
 
   //active user
@@ -72,12 +108,14 @@ export class AuthService {
     queryParams = queryParams.append('key', key);
 
     //return this.http.get<UserInformation>(url,{params:queryParams});
-    return this.http.get<any>(this.urlService.getUrl("/activate"), { params: queryParams }).pipe(
-      map((res: Response) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<any>(this.urlService.getUrl('/activate'), { params: queryParams })
+      .pipe(
+        map((res: Response) => {
+          return res || {};
+        }),
+        catchError(this.handleError)
+      );
   }
 
   // Error
@@ -93,7 +131,10 @@ export class AuthService {
     return throwError(msg);
   }
 
-  changePassword(passChange:PasswordChange):Observable<any>{
-    return this.http.post(this.urlService.getUrl("/account/change-password"),passChange);
+  changePassword(passChange: PasswordChange): Observable<any> {
+    return this.http.post(
+      this.urlService.getUrl('/account/change-password'),
+      passChange
+    );
   }
 }
