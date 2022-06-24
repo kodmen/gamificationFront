@@ -11,6 +11,10 @@ export class HomeComponent implements OnInit {
 
   constructor(private notifyService : NotificationService) { }
    
+  //  token = "eyJ0eXAiO.../// jwt token";
+  //  decoded = jwt_decode(token);
+  // console.log(decoded);
+
   showToasterSuccess(){
       this.notifyService.showSuccess("Data shown successfully !!", "tutsmake.com")
   }

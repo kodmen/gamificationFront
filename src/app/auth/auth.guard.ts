@@ -8,6 +8,8 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+// import jwt_decode from "jwt-decode";
+
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +21,12 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
+
+    // var token = "eyJ0eXAiO.../// jwt token";
+    // var decoded = jwt_decode(token);
+    // console.log(decoded);
+    
+
     this.authService.authenticate().subscribe({
       next: (res) => {
         if (res === null) this.authService.doLogout();

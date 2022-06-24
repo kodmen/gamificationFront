@@ -11,10 +11,10 @@ export class MyInitService {
   }
 
   initCheck(){
-    if(localStorage.getItem("access_token") === null){
-      this.authService.doLogout();
-    }
-    
+    // if(localStorage.getItem("access_token") === null){
+    //   this.authService.doLogout();
+    // }
+
 
   }
 }
